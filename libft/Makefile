@@ -6,7 +6,7 @@
 #    By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/04 13:13:57 by mannouao          #+#    #+#              #
-#    Updated: 2022/02/20 21:16:14 by mannouao         ###   ########.fr        #
+#    Updated: 2022/03/11 08:28:43 by mannouao         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,9 +58,8 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -I .
+	$(CC) $(CFLAGS) -c $<
 	ar rcs $(NAME) $@
-	
 
 clean:
 	rm -f $(OBJS)

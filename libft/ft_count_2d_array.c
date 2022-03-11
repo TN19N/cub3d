@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.c                                            :+:      :+:    :+:   */
+/*   ft_count_2d_array.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/11 08:20:02 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/11 08:39:20 by mannouao         ###   ########.fr       */
+/*   Created: 2022/03/11 11:17:13 by mannouao          #+#    #+#             */
+/*   Updated: 2022/03/11 11:18:32 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../include/cub3d.h"
+# include "libft.h"
 
-void	check_the_map(char *map_name, t_data *data)
+int	ft_count_2d_array(char **arr_2d)
 {
-	char	*tmp_str;
+	int i;
 
-	(void)data;
-	tmp_str = ft_strrchr(map_name, '.');
-	if (!tmp_str || ft_strcmp(tmp_str, ".cub"))
-	{
-		ft_putendl_fd("the map should be .cub format", STDERR_FILENO);
-		exit(EXIT_FAILURE);
-	}
+	i = 0;
+	while (arr_2d[i])
+		i++;
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 12:21:22 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/11 08:27:58 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/11 11:15:33 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strdup(const char *s)
 	ptr = malloc((i + 1) * sizeof(*ptr));
 	i = 0;
 	if (ptr == NULL)
-		return (NULL);
+		ft_error("malloc failed :(");
 	while (s[i])
 	{
 		ptr[i] = s[i];

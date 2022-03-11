@@ -1,37 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 08:49:28 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/11 12:10:30 by mannouao         ###   ########.fr       */
+/*   Created: 2022/03/11 07:59:58 by mannouao          #+#    #+#             */
+/*   Updated: 2022/03/11 11:09:50 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
 
-int	ft_atoi(const char *str)
+void	ft_error(char *msg)
 {
-	unsigned long long	num;
-	int					o;
-
-	o = 1;
-	num = 0;
-	while ((*str >= 9 && *str <= 13) || *str == ' ')
-		str++;
-	if (*str == '+' || *str == '-')
-		if (*str++ == '-')
-			ft_error("color value shold be ");
-	while (*str >= '0' && *str <= '9')
-	{
-		num = (num * 10) + (*str - '0');
-		if (num > 255 && o > 0)
-			return (-1);
-		if (num > 255 && o < 0)
-			return (0);
-		str++;
-	}
-	return ((int)num * o);
+	ft_putendl_fd(msg, STDERR_FILENO);
+	exit(EXIT_FAILURE);
 }

@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 17:38:25 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/11 08:28:03 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/11 11:15:05 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*ft_strjoin(const char *s1, char const *s2)
 	len = len_1_2[0] + len_1_2[1];
 	ptr = malloc((len + 1) * sizeof(*ptr));
 	if (ptr == NULL)
-		return (NULL);
+		ft_error("malloc failed :(");;
 	fill_str(ptr, len_1_2, s1, s2);
 	return (ptr);
 }

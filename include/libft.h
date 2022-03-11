@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 14:02:37 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/11 07:40:48 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/11 11:18:45 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,11 @@ char	*ft_strjoin(const char *s1, char const *s2);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+
+//#3
+char	*ft_get_line(int fd);
+int		ft_is_just_spaces(char *str);
+void	ft_error(char *msg);
+int		ft_count_2d_array(char **arr_2d);
 
 #endif

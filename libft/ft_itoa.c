@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 09:48:42 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/11 08:27:27 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/11 11:15:11 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	*ft_itoa(int a)
 	len_num = ft_len_num(a);
 	str = malloc(sizeof(char) * (len_num + 1));
 	if (str == NULL)
-		return (0);
+		ft_error("malloc failed :(");
 	if (a < 0)
 	{
 		str[0] = '-';

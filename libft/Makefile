@@ -6,7 +6,7 @@
 #    By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/04 13:13:57 by mannouao          #+#    #+#              #
-#    Updated: 2022/03/11 08:28:43 by mannouao         ###   ########.fr        #
+#    Updated: 2022/03/11 11:19:03 by mannouao         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,11 @@ SRCS = ft_atoi.c \
 		ft_tolower.c\
 		ft_toupper.c\
 		ft_strlcat.c\
-		ft_strncmp.c
+		ft_strncmp.c\
+		ft_is_just_spaces.c\
+		ft_get_line.c\
+		ft-error.c\
+		ft_count_2d_array.c
 
 OBJS = $(SRCS:.c=.o)
 GCC = gcc

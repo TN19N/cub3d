@@ -6,11 +6,11 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 16:13:14 by mannouao          #+#    #+#             */
-/*   Updated: 2022/02/23 11:08:31 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/11 08:01:14 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../include/libft.h"
 
 void	ft_putnbr_fd(int n, int fd)
 {

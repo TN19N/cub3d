@@ -6,16 +6,15 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/11 07:45:43 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/11 07:59:06 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef CUB3D_H
+#ifndef CUB3D_H
 # define CUB3D_H
 
 # include "libft.h"
 # include <unistd.h>
 # include <stdlib.h>
 
-
-# endif
+#endif

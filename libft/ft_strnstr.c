@@ -6,11 +6,11 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 08:26:00 by mannouao          #+#    #+#             */
-/*   Updated: 2022/02/23 11:09:10 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/11 08:01:50 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../include/libft.h"
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {

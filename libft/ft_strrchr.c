@@ -6,11 +6,11 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 17:22:49 by mannouao          #+#    #+#             */
-/*   Updated: 2022/02/23 11:09:13 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/11 08:01:53 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../include/libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {

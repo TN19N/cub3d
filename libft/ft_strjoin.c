@@ -6,11 +6,11 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 17:38:25 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/11 07:39:34 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/11 08:01:36 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../include/libft.h"
 
 void	fill_str(char *ptr, int *len_1_2, const char *s1, const char *s2)
 {

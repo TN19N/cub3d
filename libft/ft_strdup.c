@@ -6,11 +6,11 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 12:21:22 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/11 07:39:46 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/11 08:01:30 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../include/libft.h"
 
 char	*ft_strdup(const char *s)
 {

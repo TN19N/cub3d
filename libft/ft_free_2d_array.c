@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_2d_array.c                                :+:      :+:    :+:   */
+/*   ft_free_2d_array.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/11 11:17:13 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/11 13:42:19 by mannouao         ###   ########.fr       */
+/*   Created: 2022/03/11 12:56:23 by mannouao          #+#    #+#             */
+/*   Updated: 2022/03/11 13:42:32 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../include/libft.h"
+# include "../include/cub3d.h"
 
-int	ft_count_2d_array(char **arr_2d)
+void	ft_free_2d_array(char **arr_2d)
 {
 	int i;
 
 	i = 0;
 	while (arr_2d[i])
+	{
+		free(arr_2d[i]);
 		i++;
-	return (i);
+	}
+	free(arr_2d);
 }

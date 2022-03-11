@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/11 11:55:44 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/11 13:35:46 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ typedef	struct s_data
 }		t_data;
 
 void	init_the_map(char *map_name, t_data *data);
-void	get_xpm_files(char *file_path, void **ptr);
 void	get_colors(char *color, int **ptr);
 void	get_xpm_files(char *file_path, void **ptr, void *ml);
+int		check_if_all_fill(t_data *data); // the is tmp here dont forgat to delet it
+void	add_to_map(t_data *data, char *line);
 
 #endif

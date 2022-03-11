@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 14:02:37 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/11 11:18:45 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/11 13:40:55 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ char	*ft_get_line(int fd);
 int		ft_is_just_spaces(char *str);
 void	ft_error(char *msg);
 int		ft_count_2d_array(char **arr_2d);
+void	ft_free_2d_array(char **arr_2d);
 
 #endif

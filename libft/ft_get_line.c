@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 09:30:12 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/11 11:00:49 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/11 13:41:41 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	*ft_get_line(int fd)
 {
 	char		*line;
 
-	line == NULL;
+	line = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	line = get_fill(fd, line);

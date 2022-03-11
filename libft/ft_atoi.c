@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 08:49:28 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/11 12:10:30 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/11 12:54:46 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,12 @@ int	ft_atoi(const char *str)
 		str++;
 	if (*str == '+' || *str == '-')
 		if (*str++ == '-')
-			ft_error("color value shold be ");
+			ft_error("color value should be positive");
 	while (*str >= '0' && *str <= '9')
 	{
 		num = (num * 10) + (*str - '0');
-		if (num > 255 && o > 0)
-			return (-1);
-		if (num > 255 && o < 0)
-			return (0);
+		if (num > 255)
+			ft_error("envalid value of color");;
 		str++;
 	}
 	return ((int)num * o);

@@ -6,7 +6,7 @@
 #    By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/11 07:17:57 by mannouao          #+#    #+#              #
-#    Updated: 2022/03/11 11:42:09 by mannouao         ###   ########.fr        #
+#    Updated: 2022/03/11 13:44:45 by mannouao         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ LIBFT = libft/libft.a
 SRCS_PATH = srcs/
 
 SRCS =  $(SRCS_PATH)cub3d.c \
-		$(SRCS_PATH)init_the_map.c
+		$(SRCS_PATH)init_the_map.c \
+		$(SRCS_PATH)fill_data.c
 
 OBJS = $(SRCS:.c=.o)
 CFLAGS = -Wall -Wextra -Werror

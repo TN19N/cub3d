@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 08:20:02 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/11 11:56:18 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/11 13:35:59 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,14 @@ void	check_format(char *map_name)
 		ft_error("the map should be .cub format");
 }
 
-void	check_if_all_fill(t_data *data)
+int	check_if_all_fill(t_data *data)
 {
 	if (data->ea_texture == NULL || data->no_texture == NULL \
 	|| data->so_texture == NULL || data->we_texture == NULL \
 	|| data->floor_color == NULL || data->ceilling_color == NULL)
-		ft_error("invalid map !!");
+		return (1);
+	else
+		return (0);
 }
 
 void	get_info_from_lines(char *line, t_data *data)
@@ -45,27 +47,39 @@ void	get_info_from_lines(char *line, t_data *data)
 	else if (!ft_strcmp(tab[0], "EA"))
 		get_xpm_files(tab[1], &data->ea_texture, data->ml);
 	else if (!ft_strcmp(tab[0], "F"))
-		get_colors(tab[1], data->floor_color);
+		get_colors(tab[1], &data->floor_color);
 	else if (!ft_strcmp(tab[0], "C"))
-		get_colors(tab[1], data->ceilling_color);
+		get_colors(tab[1], &data->ceilling_color);
 	else
-		check_if_all_fill(data);
+		if(check_if_all_fill(data))
+			ft_error("invalid map !!");
+	ft_free_2d_array(tab);
 }
 
-void	get_texters(int fd, t_data *data)
+void	get_texters_and_map(int fd, t_data *data)
 {
 	char	*line;
-	int		fd_texter;
 
 	while (1)
 	{
 		line = ft_get_line(fd);
 		if (line)
 			break ;
-		if (!ft_is_just_spaces(line))
+		if (check_if_all_fill(data) && !ft_is_just_spaces(line))
 			get_info_from_lines(line, data);
+		else if (check_if_all_fill(data))
+			ft_error("envalid map");
+		else
+		{
+			if (ft_is_just_spaces(line))
+				ft_error("envalid map");
+			else
+				add_to_map(data, line);
+		}
 		free(line);
 	}
+	if (check_if_all_fill(data) || !data->map)
+		ft_error("envalid map");
 }
 
 void	init_the_map(char *map_name, t_data *data)
@@ -78,9 +92,10 @@ void	init_the_map(char *map_name, t_data *data)
 	data->we_texture = NULL;
 	data->floor_color = NULL;
 	data->ceilling_color = NULL;
+	data->map = NULL;
 	check_format(map_name);
 	fd = open(map_name, O_RDONLY);
 	if (fd == -1)
 		ft_error("open the map faild");
-	get_texters(fd, data);
+	get_texters_and_map(fd, data);
 }

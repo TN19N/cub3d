@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 10:18:20 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/12 19:57:16 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/12 20:34:10 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,25 +62,26 @@ void	strat_ray(t_data *data)
 	t_player *pl;
 	char	*info;
 	int y;
+	int tmp;
 
 	pl = &data->pl;
 	x = -1;
-	hit = 0;
-	buffer = malloc(sizeof(int *) * WINDOW_HIEGHT);
+	buffer = ft_calloc(WINDOW_HIEGHT, sizeof(int *));
 	if (!buffer)
 		ft_error("mallc fail :(");
 	while (++x < WINDOW_HIEGHT)
 	{
-		buffer[x] = malloc(sizeof(int) * WINDOW_WIDTH);
+		buffer[x] = ft_calloc(WINDOW_WIDTH, sizeof(int));
 		if (!buffer[x])
 			ft_error("malloc fail :(");
 	}
 	x = -1;
 	while (++x < WINDOW_WIDTH)
 	{
+		hit = 0;
 		camera_x = 2 * x / (double)WINDOW_WIDTH - 1;
-		raydir_x = pl->dir_x + pl->plane_x*camera_x;
-		raydir_y = pl->dir_y + pl->plane_y*camera_x;
+		raydir_x = pl->dir_x + pl->plane_x * camera_x;
+		raydir_y = pl->dir_y + pl->plane_y * camera_x;
 		map_x = (int)pl->pos_x;
 		map_y = (int)pl->pos_y;
 		delta_dist_x = (raydir_x == 0) ? 1e30 : fabs((1 / raydir_x));
@@ -127,7 +128,7 @@ void	strat_ray(t_data *data)
     	else
 			perp_wall_dist = side_dist_y - delta_dist_y;
 		line_height = (int)(WINDOW_HIEGHT / perp_wall_dist);
-		pitch = 100;
+		pitch = 0;
 		draw_start = -line_height / 2 + WINDOW_HIEGHT / 2 + pitch;
       	if (draw_start < 0)
 			draw_start = 0;
@@ -148,7 +149,6 @@ void	strat_ray(t_data *data)
 		tex_pos = (draw_start - pitch - WINDOW_HIEGHT / 2 + line_height / 2) * step;
 		y = draw_start;
 		c = data->map[map_y][map_x];
-		int tmp;
       	while (y < draw_end)
       	{
     		tex_y = (int)tex_pos & (TEXTER_HIEGHT - 1);

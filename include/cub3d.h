@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/12 07:24:56 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/12 10:09:54 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_player
 	int		x;
 	int		y;
 	char	spawning;
-}			   t_player;
+}			t_player;
 
 typedef struct s_data
 {

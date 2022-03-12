@@ -6,15 +6,15 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 08:20:02 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/11 13:35:59 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/12 07:02:01 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../include/cub3d.h"
+#include "../include/cub3d.h"
 
 void	check_format(char *map_name)
 {
-	char *tmp_str;
+	char	*tmp_str;
 
 	tmp_str = ft_strrchr(map_name, '.');
 	if (!tmp_str || ft_strcmp(tmp_str, ".cub"))
@@ -33,8 +33,8 @@ int	check_if_all_fill(t_data *data)
 
 void	get_info_from_lines(char *line, t_data *data)
 {
-	char **tab;
-	
+	char	**tab;
+
 	tab = ft_split(line, ' ');
 	if (ft_count_2d_array(tab) != 2)
 		ft_error("invalid map !!");
@@ -51,8 +51,8 @@ void	get_info_from_lines(char *line, t_data *data)
 	else if (!ft_strcmp(tab[0], "C"))
 		get_colors(tab[1], &data->ceilling_color);
 	else
-		if(check_if_all_fill(data))
-			ft_error("invalid map !!");
+		if (check_if_all_fill(data))
+			ft_error("envalid map !!");
 	ft_free_2d_array(tab);
 }
 
@@ -63,17 +63,15 @@ void	get_texters_and_map(int fd, t_data *data)
 	while (1)
 	{
 		line = ft_get_line(fd);
-		if (line)
+		if (!line)
 			break ;
 		if (check_if_all_fill(data) && !ft_is_just_spaces(line))
 			get_info_from_lines(line, data);
-		else if (check_if_all_fill(data))
-			ft_error("envalid map");
 		else
 		{
-			if (ft_is_just_spaces(line))
+			if (ft_is_just_spaces(line) && data->map)
 				ft_error("envalid map");
-			else
+			else if (!ft_is_just_spaces(line))
 				add_to_map(data, line);
 		}
 		free(line);
@@ -84,7 +82,7 @@ void	get_texters_and_map(int fd, t_data *data)
 
 void	init_the_map(char *map_name, t_data *data)
 {
-	int fd;
+	int	fd;
 
 	data->ea_texture = NULL;
 	data->no_texture = NULL;
@@ -98,4 +96,5 @@ void	init_the_map(char *map_name, t_data *data)
 	if (fd == -1)
 		ft_error("open the map faild");
 	get_texters_and_map(fd, data);
+	check_map(data);
 }

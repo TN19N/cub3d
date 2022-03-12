@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 08:49:28 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/11 12:54:46 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/12 06:54:40 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_atoi(const char *str)
 	{
 		num = (num * 10) + (*str - '0');
 		if (num > 255)
-			ft_error("envalid value of color");;
+			ft_error("envalid value of color");
 		str++;
 	}
 	return ((int)num * o);

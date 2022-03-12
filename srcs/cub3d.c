@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:18:17 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/11 13:35:00 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/12 07:01:01 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ int	main(int ac, char **av)
 	data.ml = mlx_init();
 	init_the_map(av[1], &data);
 	// ********* test ********
-	if (check_if_all_fill(&data))
-		ft_putendl_fd("colors and texters are not finished", STDOUT_FILENO);
-	else
-		ft_putendl_fd("all colors and texters are finished", STDOUT_FILENO);
+	// if (check_if_all_fill(&data))
+	// 	ft_putendl_fd("colors and texters are not finished", STDOUT_FILENO);
+	// else
+	// 	ft_putendl_fd("all colors and texters are finished", STDOUT_FILENO);
 	ft_putendl_fd("***************************the map ********************************\n", STDOUT_FILENO);
 	while (data.map[i])
 	{
@@ -34,6 +34,7 @@ int	main(int ac, char **av)
 		i++;
 	}
 	ft_putendl_fd("\n***************************the map ********************************\n", STDOUT_FILENO);
+	system("leaks cub3d");
 	// ***********************
 	//mlx_loop(data.ml);
 	return (EXIT_SUCCESS);

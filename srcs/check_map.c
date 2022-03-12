@@ -1,20 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/11 07:59:58 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/12 07:11:11 by mannouao         ###   ########.fr       */
+/*   Created: 2022/03/12 06:59:54 by mannouao          #+#    #+#             */
+/*   Updated: 2022/03/12 07:26:06 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+# include "../include/cub3d.h"
 
-void	ft_error(char *msg)
+int		check_if_valid(char c)
 {
-	ft_putendl_fd("Error", STDERR_FILENO);
-	ft_putendl_fd(msg, STDERR_FILENO);
-	exit(EXIT_FAILURE);
+	if (c != '1' && c != ' ' && c != '0' \
+	&& c != 'N' && c != 'W' && c != 'E' \
+	&& c != 'S')
+		return (1);
+	return (0);
+}
+
+void	check_map(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (data->map[++i])
+	{
+		j = -1;
+		while (data->map[i][++j])
+		{
+			if (check_if_valid(data->map[i][j]))
+				ft_error("invalid element in the map");
+		}	
+	}
 }

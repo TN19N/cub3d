@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 09:30:12 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/11 13:41:41 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/12 06:53:42 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int	if_is_ther(char *saver)
 
 char	*get_fill(int fd, char *line)
 {
-	char		*buff;
-	int			i;
-	char 		*tmp;
+	char	*buff;
+	int		i;
+	char	*tmp;
 
 	buff = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buff)
-		ft_error("malloc failed :(\n");;
+		ft_error("malloc failed :(\n");
 	i = 1;
 	while (!if_is_ther(line) && i != 0)
 	{
@@ -42,6 +42,7 @@ char	*get_fill(int fd, char *line)
 		if (i == -1)
 		{
 			free(buff);
+			free(line);
 			return (NULL);
 		}
 		buff[i] = '\0';
@@ -60,6 +61,10 @@ char	*ft_get_line(int fd)
 	line = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
+	line = malloc(sizeof(char) * 1);
+	if (!line)
+		ft_error("malloc faild :(");
+	line[0] = '\0';
 	line = get_fill(fd, line);
 	if (!line)
 		return (NULL);
@@ -68,5 +73,7 @@ char	*ft_get_line(int fd)
 		free(line);
 		return (NULL);
 	}
+	if (line[ft_strlen(line) - 1] == '\n')
+		line[ft_strlen(line) - 1] = '\0';
 	return (line);
 }

@@ -6,15 +6,15 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 12:56:23 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/11 13:42:32 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/12 06:54:05 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../include/cub3d.h"
+#include "../include/cub3d.h"
 
 void	ft_free_2d_array(char **arr_2d)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (arr_2d[i])

@@ -6,7 +6,7 @@
 #    By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/11 07:17:57 by mannouao          #+#    #+#              #
-#    Updated: 2022/03/12 07:26:54 by mannouao         ###   ########.fr        #
+#    Updated: 2022/03/12 11:17:14 by mannouao         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ SRCS_PATH = srcs/
 SRCS =  $(SRCS_PATH)cub3d.c \
 		$(SRCS_PATH)init_the_map.c \
 		$(SRCS_PATH)fill_data.c \
-		$(SRCS_PATH)check_map.c
+		$(SRCS_PATH)check_map.c \
+		$(SRCS_PATH)/ray-casting/ray-casting.c
 
 OBJS = $(SRCS:.c=.o)
 CFLAGS = -Wall -Wextra -Werror

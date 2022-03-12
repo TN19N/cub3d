@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/12 10:09:54 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/12 13:38:39 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,24 @@
 # include "libft.h"
 # include <unistd.h>
 # include <mlx.h>
+# include <math.h>
 # include <stdlib.h>
 # include <fcntl.h>
 
+# define WINDOW_HIEGHT 480
+# define WINDOW_WIDTH 640
+
+# define TEXTER_HIEGHT 64
+# define TEXTER_WIDTH 64
+
 typedef struct s_player
 {
-	int		x;
-	int		y;
+	double		pos_x;
+	double		pos_y;
+	double		dir_x;
+	double		dir_y;
+	double		plane_x;
+	double		plane_y;
 	char	spawning;
 }			t_player;
 
@@ -45,5 +56,6 @@ void	get_colors(char *color, int **ptr);
 void	get_xpm_files(char *file_path, void **ptr, void *ml);
 void	add_to_map(t_data *data, char *line);
 void	check_map(t_data *data);
+void	strat_ray(t_data *data);
 
 #endif

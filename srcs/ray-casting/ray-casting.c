@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 10:18:20 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/12 14:22:49 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/12 19:57:16 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,9 @@ void	draw_buffer(int **buffer, t_data *data)
 		i++;
 	}
 }
-
-	// data->pl.dir_x = -1;
-	// data->pl.dir_y = 0;
-	// data->pl.plane_x = 0;
-	// data->pl.plane_y = 0.66;
-
 void	strat_ray(t_data *data)
 {
+	int pitch;
 	int	**buffer;;
 	double tex_pos;
 	double step;
@@ -81,24 +76,15 @@ void	strat_ray(t_data *data)
 			ft_error("malloc fail :(");
 	}
 	x = -1;
-	// x = 0 --- x = max window_width
 	while (++x < WINDOW_WIDTH)
 	{
-		printf("x = %d\n", x);
 		camera_x = 2 * x / (double)WINDOW_WIDTH - 1;
-		//printf("camera_x = %f\n", camera_x);
 		raydir_x = pl->dir_x + pl->plane_x*camera_x;
-		//printf("raydir_x = %f\n", raydir_x);
 		raydir_y = pl->dir_y + pl->plane_y*camera_x;
-		//printf("raydir_y = %f\n", raydir_y);
 		map_x = (int)pl->pos_x;
-		//printf("map_x = %d\n", map_x);
 		map_y = (int)pl->pos_y;
-		//printf("map_y = %d\n", map_y);
-		delta_dist_x = (raydir_x == 0) ? 1e30 : fabs(1 / raydir_x);
-		//printf("delta_dist_x = %f\n", delta_dist_x);
-		delta_dist_y = (raydir_y == 0) ? 1e30 : fabs(1 / raydir_y);
-		//printf("delta_dist_y = %f\n", delta_dist_y);
+		delta_dist_x = (raydir_x == 0) ? 1e30 : fabs((1 / raydir_x));
+		delta_dist_y = (raydir_y == 0) ? 1e30 : fabs((1 / raydir_y));
 		if (raydir_x < 0)
 		{
 			step_x = -1;
@@ -119,11 +105,7 @@ void	strat_ray(t_data *data)
 			step_y = 1;
 			side_dist_y = (map_y + 1.0 - pl->pos_y) * delta_dist_y;
 		}
-		//printf("side_dist_x = %f\n", side_dist_x);
-		//printf("side_dist_y = %f\n", side_dist_y);
-		//printf("step_x = %d\n", step_x);
-		//printf("step_y = %d\n", step_y);
-		while(hit == 0)
+		while (hit == 0)
       	{
         	if(side_dist_x < side_dist_y)
         	{
@@ -137,48 +119,44 @@ void	strat_ray(t_data *data)
         		map_y += step_y;
     			side = 1;
        		}
-			//printf("befor sig mp_x = %d , map_y = %d\n", map_x, map_y);
-        	if (data->map[map_x][map_y] != '0')
+			if (data->map[map_y][map_x] == '1')
 				hit = 1;
 		}
-		//printf("side = %d\n", side);
-		//printf("(2) map_x = %d\n", map_x);
-		//printf("(2) map_y = %d\n", map_y);
-		if(side == 0)
-			perp_wall_dist = (side_dist_x - delta_dist_x);
+		if (side == 0)
+			perp_wall_dist = side_dist_x - delta_dist_x;
     	else
-			perp_wall_dist = (side_dist_y - delta_dist_y);
+			perp_wall_dist = side_dist_y - delta_dist_y;
 		line_height = (int)(WINDOW_HIEGHT / perp_wall_dist);
-		draw_start = -line_height / 2 + WINDOW_HIEGHT / 2;
-      	if(draw_start < 0)
+		pitch = 100;
+		draw_start = -line_height / 2 + WINDOW_HIEGHT / 2 + pitch;
+      	if (draw_start < 0)
 			draw_start = 0;
-      	draw_end = line_height / 2 + WINDOW_HIEGHT / 2;
-      	if(draw_end >= WINDOW_HIEGHT)
+      	draw_end = line_height / 2 + WINDOW_HIEGHT / 2 + pitch;
+      	if (draw_end >= WINDOW_HIEGHT)
 			draw_end = WINDOW_HIEGHT - 1;
       	if (side == 0)
 			wall_x = pl->pos_y + perp_wall_dist * raydir_y;
       	else
 			wall_x = pl->pos_x + perp_wall_dist * raydir_x;
       	wall_x -= floor((wall_x));
-		tex_x = (int)(wall_x * (double)WINDOW_HIEGHT);
+		tex_x = (int)(wall_x * (double)TEXTER_WIDTH);
     	if (side == 0 && raydir_x > 0)
-			tex_x = WINDOW_HIEGHT - tex_x - 1;
+			tex_x = TEXTER_WIDTH - tex_x - 1;
     	if (side == 1 && raydir_y < 0)
-			tex_x = WINDOW_HIEGHT - tex_x - 1;
+			tex_x = TEXTER_WIDTH - tex_x - 1;
 		step = 1.0 * TEXTER_HIEGHT / line_height;
-		tex_pos = (draw_start - WINDOW_HIEGHT / 2 + line_height / 2) * step;
+		tex_pos = (draw_start - pitch - WINDOW_HIEGHT / 2 + line_height / 2) * step;
 		y = draw_start;
 		c = data->map[map_y][map_x];
+		int tmp;
       	while (y < draw_end)
       	{
-       		// Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
     		tex_y = (int)tex_pos & (TEXTER_HIEGHT - 1);
        		tex_pos += step;
-			if (c == '1')
-				info = mlx_get_data_addr(data->no_texture, NULL, NULL,NULL);
+			info = mlx_get_data_addr(data->no_texture, &tmp, &tmp, &tmp);
     		color = (int)info[TEXTER_HIEGHT * tex_y + tex_x];
-        	//make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
-        	//if(side == 1) color = (color >> 1) & 8355711;
+        	if (side == 1)
+				color = (color >> 1) & 8355711;
         	buffer[y][x] = color;
 			y++;
       	}

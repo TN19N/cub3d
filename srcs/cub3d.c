@@ -6,18 +6,28 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:18:17 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/12 13:38:18 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/12 18:08:15 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+# include <stdio.h>
 
 void	mega_init(t_data *data)
 {
-	data->pl.dir_x = -1;
-	data->pl.dir_y = 0;
-	data->pl.plane_x = 0;
+	data->pl.dir_x = -1.0;
+	data->pl.dir_y = 0.0;
+	data->pl.plane_x = 0.0;
 	data->pl.plane_y = 0.66;
+}
+
+int move_player(int key, void *v_data)
+{
+	t_data *data = (t_data *)v_data;
+
+	(void)data;
+	printf(" --[%d]\n", key);
+	return (0);
 }
 
 int	main(int ac, char **av)
@@ -47,6 +57,7 @@ int	main(int ac, char **av)
 	// ft_putendl_fd("\n***************************the map ********************************\n", STDOUT_FILENO);
 	//system("leaks cub3d");
 	// ***********************
+	//mlx_key_hook(data.ml, &move_player, &data);
 	mlx_loop(data.ml);
 	return (EXIT_SUCCESS);
 }

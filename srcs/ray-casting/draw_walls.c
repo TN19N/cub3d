@@ -6,11 +6,10 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 07:18:34 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/13 21:16:45 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/13 21:20:28 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "../../include/cub3d.h"
 
 void	start_drawing(t_data *data, t_math *math, int x)

@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/13 21:05:06 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/13 22:40:00 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,9 @@
 
 # define MOVE_FORWARD 13
 # define MOVE_BOCKWARD 1 
-# define MOVE_LEFT 0
-# define MOVE_WRIGHT 2
 
-# define ROT_LEFT 123
-# define ROT_WRIGHT 124
+# define ROT_LEFT 0
+# define ROT_WRIGHT 2
 
 # define ESC 53
 

@@ -6,11 +6,12 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:18:17 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/13 21:05:24 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/13 22:40:12 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+#include <stdio.h>
 
 int	ft_clean(t_data	*data)
 {
@@ -36,12 +37,8 @@ int	move(t_data *data)
 	i = 0;
 	if (data->key_bord[MOVE_FORWARD] && ++i)
 		move_player(data, 1.0, 1.0);
-	if (data->key_bord[MOVE_LEFT] && ++i)
-		move_player(data, 1.0, 0.0);
 	if (data->key_bord[MOVE_BOCKWARD] && ++i)
 		move_player(data, -1.0, -1.0);
-	if (data->key_bord[MOVE_WRIGHT] && ++i)
-		move_player(data, 0.0, 1.0);
 	if (data->key_bord[ROT_LEFT] && ++i)
 		rotate_player(data, 1.0);
 	if (data->key_bord[ROT_WRIGHT] && ++i)

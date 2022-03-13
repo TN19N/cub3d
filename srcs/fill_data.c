@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 11:36:38 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/13 07:17:43 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/13 14:05:33 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	get_xpm_files(char *file_path, t_texture *t, void *ml)
 	t->texture = mlx_xpm_file_to_image(ml, file_path, &t->width, &t->hight);
 	if (!t->texture)
 		ft_error("envalid texter !!");
-	t->info = mlx_get_data_addr(t->texture, &t->bits_per_pixl, &tmp, &tmp);
+	t->info = mlx_get_data_addr(t->texture, &t->bits, &t->line_len, &tmp);
 }
 
 int	create_trgb(int t, int r, int g, int b)

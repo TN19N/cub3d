@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/13 10:32:00 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/13 14:09:54 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,24 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
-# define WINDOW_HIEGHT 480
-# define WINDOW_WIDTH 640
+# define WINDOW_HIEGHT 640
+# define WINDOW_WIDTH 1280
 
 # define TEXTER_HIEGHT 64
 # define TEXTER_WIDTH 64
 
 # define MOVE_SPEED 1.0
 # define ROT_SPEED 0.1
+
+# define MOVE_FORWARD 13
+# define MOVE_BOCKWARD 1 
+# define MOVE_LEFT 0
+# define MOVE_WRIGHT 2
+
+# define ROT_LEFT 123
+# define ROT_WRIGHT 124
+
+# define ESC 53
 
 typedef struct s_math
 {
@@ -58,8 +68,9 @@ typedef struct s_math
 typedef struct s_texture
 {
 	void	*texture;
-	int		bits_per_pixl;
+	int		bits;
 	int		hight;
+	int		line_len;
 	int		width;
 	char	*info;
 }			t_texture;

@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:18:17 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/13 10:30:33 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/13 14:08:25 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	ft_clean(void *v_data)
 
 void	mega_init(t_data *data)
 {
-	data->pl.dir_x = 1.0;
-	data->pl.dir_y = -1.0;
+	data->pl.dir_x = -1.0;
+	data->pl.dir_y = 0.0;
 	data->pl.plane_x = 0.0;
 	data->pl.plane_y = 0.66;
 }
@@ -37,19 +37,19 @@ int	move(int key, void *v_data)
 	t_data	*data;
 
 	data = (t_data *)v_data;
-	if (key == 13)
-		move_player(data, 0.0, -1.0);
-	else if (key == 0)
-		move_player(data, -1.0, 0.0);
-	else if (key == 1)
-		move_player(data, 0.0, 1.0);
-	else if (key == 2)
-		move_player(data, 1.0, 0.0);
-	else if (key == 123)
-		rotate_player(data, -1.0);
-	else if (key == 124)
+	if (key == MOVE_FORWARD)
+		move_player(data, 1.0, 1.0);
+	//else if (key == MOVE_LEFT)
+	//	move_player(data, 0.0, -1.0); // need fix
+	else if (key == MOVE_BOCKWARD)
+		move_player(data, -1.0, -1.0);
+	//else if (key == MOVE_WRIGHT) // need fix
+	//	move_player(data, -1.0, 0.0);
+	else if (key == ROT_LEFT)
 		rotate_player(data, 1.0);
-	else if (key == 53)
+	else if (key == ROT_WRIGHT)
+		rotate_player(data, -1.0);
+	else if (key == ESC)
 		ft_clean(v_data);
 	strat_ray(data);
 	return (0);

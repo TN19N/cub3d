@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 08:20:02 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/12 11:21:13 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/13 07:15:05 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	check_format(char *map_name)
 
 int	check_if_all_fill(t_data *data)
 {
-	if (data->ea_texture == NULL || data->no_texture == NULL \
-	|| data->so_texture == NULL || data->we_texture == NULL \
+	if (data->ea_t.texture == NULL || data->no_t.texture == NULL \
+	|| data->so_t.texture == NULL || data->we_t.texture == NULL \
 	|| data->floor_color == NULL || data->ceilling_color == NULL)
 		return (1);
 	else
@@ -39,13 +39,13 @@ void	get_info_from_lines(char *line, t_data *data)
 	if (ft_count_2d_array(tab) != 2)
 		ft_error("invalid map !!");
 	if (!ft_strcmp(tab[0], "NO"))
-		get_xpm_files(tab[1], &data->no_texture, data->ml);
+		get_xpm_files(tab[1], &data->no_t, data->ml);
 	else if (!ft_strcmp(tab[0], "SO"))
-		get_xpm_files(tab[1], &data->so_texture, data->ml);
+		get_xpm_files(tab[1], &data->so_t, data->ml);
 	else if (!ft_strcmp(tab[0], "WE"))
-		get_xpm_files(tab[1], &data->we_texture, data->ml);
+		get_xpm_files(tab[1], &data->we_t, data->ml);
 	else if (!ft_strcmp(tab[0], "EA"))
-		get_xpm_files(tab[1], &data->ea_texture, data->ml);
+		get_xpm_files(tab[1], &data->ea_t, data->ml);
 	else if (!ft_strcmp(tab[0], "F"))
 		get_colors(tab[1], &data->floor_color);
 	else if (!ft_strcmp(tab[0], "C"))
@@ -84,10 +84,10 @@ void	init_the_map(char *map_name, t_data *data)
 {
 	int	fd;
 
-	data->ea_texture = NULL;
-	data->no_texture = NULL;
-	data->so_texture = NULL;
-	data->we_texture = NULL;
+	data->ea_t.texture = NULL;
+	data->no_t.texture = NULL;
+	data->so_t.texture = NULL;
+	data->we_t.texture = NULL;
 	data->floor_color = NULL;
 	data->ceilling_color = NULL;
 	data->map = NULL;

@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 11:36:38 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/12 06:49:05 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/13 07:17:43 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,16 @@ void	add_to_map(t_data *data, char *line)
 		ft_free_2d_array(tmp_map);
 }
 
-void	get_xpm_files(char *file_path, void **ptr, void *ml)
+void	get_xpm_files(char *file_path, t_texture *t, void *ml)
 {
 	int	tmp;
 
-	if (*ptr)
+	if (t->texture)
 		ft_error("you entered different textures for same element");
-	*ptr = mlx_xpm_file_to_image(ml, file_path, &tmp, &tmp);
-	if (!*ptr)
+	t->texture = mlx_xpm_file_to_image(ml, file_path, &t->width, &t->hight);
+	if (!t->texture)
 		ft_error("envalid texter !!");
+	t->info = mlx_get_data_addr(t->texture, &t->bits_per_pixl, &tmp, &tmp);
 }
 
 int	create_trgb(int t, int r, int g, int b)

@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:18:17 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/12 18:08:15 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/13 07:12:52 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,23 +41,8 @@ int	main(int ac, char **av)
 	mega_init(&data);
 	data.ml = mlx_init();
 	init_the_map(av[1], &data);
-	// ********* test ********
-	// if (check_if_all_fill(&data))
-	// 	ft_putendl_fd("colors and texters are not finished", STDOUT_FILENO);
-	// else
-	// 	ft_putendl_fd("all colors and texters are finished", STDOUT_FILENO);
 	data.wi = mlx_new_window(data.ml, WINDOW_WIDTH, WINDOW_HIEGHT, "cub3d");
 	strat_ray(&data);
-	// ft_putendl_fd("***************************the map ********************************\n", STDOUT_FILENO);
-	// while (data.map[i])
-	// {
-	// 	ft_putendl_fd(data.map[i], STDOUT_FILENO);
-	// 	i++;
-	// }
-	// ft_putendl_fd("\n***************************the map ********************************\n", STDOUT_FILENO);
-	//system("leaks cub3d");
-	// ***********************
-	//mlx_key_hook(data.ml, &move_player, &data);
 	mlx_loop(data.ml);
 	return (EXIT_SUCCESS);
 }

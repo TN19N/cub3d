@@ -6,16 +6,11 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:18:17 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/13 20:41:04 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/13 21:05:24 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-#include <stdio.h>
-# define KEYPRESS 2
-# define KEYRELEASE 3
-# define KEYPRESSMASK 1L
-# define KEYRELEASEMASK 2L
 
 int	ft_clean(t_data	*data)
 {
@@ -36,16 +31,16 @@ void	mega_init(t_data *data)
 
 int	move(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (data->key_bord[MOVE_FORWARD] && ++i)
 		move_player(data, 1.0, 1.0);
 	if (data->key_bord[MOVE_LEFT] && ++i)
-		move_player(data, 1.0, 0.0); // need fix
+		move_player(data, 1.0, 0.0);
 	if (data->key_bord[MOVE_BOCKWARD] && ++i)
 		move_player(data, -1.0, -1.0);
-	if (data->key_bord[MOVE_WRIGHT] && ++i) // need fix
+	if (data->key_bord[MOVE_WRIGHT] && ++i)
 		move_player(data, 0.0, 1.0);
 	if (data->key_bord[ROT_LEFT] && ++i)
 		rotate_player(data, 1.0);
@@ -55,18 +50,6 @@ int	move(t_data *data)
 		ft_clean(data);
 	if (i > 0)
 		strat_ray(data);
-	return (0);
-}
-
-int	releas_key(int key, t_data *data)
-{
-	data->key_bord[key] = 0;
-	return (0);
-}
-
-int	press_key(int key, t_data *data)
-{
-	data->key_bord[key] = 1;
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/13 20:42:40 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/13 21:05:06 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@
 # define ESC 53
 
 # define COLLISION 0.2
+
+# define KEYPRESS 2
+# define KEYRELEASE 3
+# define KEYPRESSMASK 1L
+# define KEYRELEASEMASK 2L
 
 typedef struct s_math
 {
@@ -121,5 +126,7 @@ int		**init_buffer(void);
 void	move_player(t_data *data, double x, double y);
 void	rotate_player(t_data *data, double i);
 void	check_col(t_data *data);
+int		releas_key(int key, t_data *data);
+int		press_key(int key, t_data *data);
 
 #endif

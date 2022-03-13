@@ -6,7 +6,7 @@
 #    By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/11 07:17:57 by mannouao          #+#    #+#              #
-#    Updated: 2022/03/13 09:17:07 by mannouao         ###   ########.fr        #
+#    Updated: 2022/03/13 21:05:41 by mannouao         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRCS =  $(SRCS_PATH)cub3d.c \
 		$(SRCS_PATH)/ray-casting/ray-casting.c \
 		$(SRCS_PATH)/ray-casting/draw_walls.c \
 		$(SRCS_PATH)/ray-casting/draw_buffer.c \
-		$(SRCS_PATH)move_player.c
+		$(SRCS_PATH)move_player.c \
+		$(SRCS_PATH)utils.c
 
 OBJS = $(SRCS:.c=.o)
 CFLAGS = -Wall -Wextra -Werror

@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/13 18:16:54 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/13 20:42:40 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 # define TEXTER_HIEGHT 64
 # define TEXTER_WIDTH 64
 
-# define MOVE_SPEED 0.15
-# define ROT_SPEED 0.1
+# define MOVE_SPEED 0.1
+# define ROT_SPEED 0.05
 
 # define MOVE_FORWARD 13
 # define MOVE_BOCKWARD 1 
@@ -105,6 +105,7 @@ typedef struct s_data
 	t_player	pl;
 	t_math		math;
 	char		**map;
+	int			*key_bord;
 }				t_data;
 
 void	init_the_map(char *map_name, t_data *data);

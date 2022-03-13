@@ -6,36 +6,59 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:18:17 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/13 07:12:52 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/13 10:30:33 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-# include <stdio.h>
+#include <stdio.h>
+
+int	ft_clean(void *v_data)
+{
+	t_data	*data;
+
+	data = (t_data *)v_data;
+	ft_free_2d_array(data->map);
+	free(data->floor_color);
+	free(data->ceilling_color);
+	exit(EXIT_SUCCESS);
+}
 
 void	mega_init(t_data *data)
 {
-	data->pl.dir_x = -1.0;
-	data->pl.dir_y = 0.0;
+	data->pl.dir_x = 1.0;
+	data->pl.dir_y = -1.0;
 	data->pl.plane_x = 0.0;
 	data->pl.plane_y = 0.66;
 }
 
-int move_player(int key, void *v_data)
+int	move(int key, void *v_data)
 {
-	t_data *data = (t_data *)v_data;
+	t_data	*data;
 
-	(void)data;
-	printf(" --[%d]\n", key);
+	data = (t_data *)v_data;
+	if (key == 13)
+		move_player(data, 0.0, -1.0);
+	else if (key == 0)
+		move_player(data, -1.0, 0.0);
+	else if (key == 1)
+		move_player(data, 0.0, 1.0);
+	else if (key == 2)
+		move_player(data, 1.0, 0.0);
+	else if (key == 123)
+		rotate_player(data, -1.0);
+	else if (key == 124)
+		rotate_player(data, 1.0);
+	else if (key == 53)
+		ft_clean(v_data);
+	strat_ray(data);
 	return (0);
 }
 
 int	main(int ac, char **av)
 {
-	int 	i;
 	t_data	data;
 
-	i = 0;
 	if (ac != 2)
 		ft_error("usage : ./cub3d (map).cub");
 	mega_init(&data);
@@ -43,6 +66,8 @@ int	main(int ac, char **av)
 	init_the_map(av[1], &data);
 	data.wi = mlx_new_window(data.ml, WINDOW_WIDTH, WINDOW_HIEGHT, "cub3d");
 	strat_ray(&data);
+	mlx_hook(data.wi, 02, 0L, move, &data);
+	mlx_hook(data.wi, 17, 0L, ft_clean, &data);
 	mlx_loop(data.ml);
 	return (EXIT_SUCCESS);
 }

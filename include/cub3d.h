@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/13 08:50:32 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/13 10:32:00 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,40 +26,43 @@
 # define TEXTER_HIEGHT 64
 # define TEXTER_WIDTH 64
 
+# define MOVE_SPEED 1.0
+# define ROT_SPEED 0.1
+
 typedef struct s_math
 {
-	int	**buffer;
-	double tex_pos;
-	double step;
-	int tex_x;
+	int		**buffer;
+	double	tex_pos;
+	double	step;
+	int		tex_x;
 	double	camera_x;
-	int side;
-	int step_x;
-	int step_y;
-	int line_height;
-	double perp_wall_dist;
-	double side_dist_x;
-	double side_dist_y;
+	int		side;
+	int		step_x;
+	int		step_y;
+	int		line_height;
+	double	perp_wall_dist;
+	double	side_dist_x;
+	double	side_dist_y;
 	double	raydir_x;
 	double	raydir_y;
-	double delta_dist_x;
-	double delta_dist_y;
-	int map_x;
-	int map_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	int		map_x;
+	int		map_y;
 	double	wall_x;
 	int		draw_start;
 	int		draw_end;
-	int 	tex_y;
-}				t_math;
+	int		tex_y;
+}			t_math;
 
-typedef	struct s_texture
+typedef struct s_texture
 {
 	void	*texture;
 	int		bits_per_pixl;
 	int		hight;
 	int		width;
 	char	*info;
-}				t_texture;
+}			t_texture;
 
 typedef struct s_player
 {
@@ -69,8 +72,8 @@ typedef struct s_player
 	double		dir_y;
 	double		plane_x;
 	double		plane_y;
-	char	spawning;
-}			t_player;
+	char		spawning;
+}				t_player;
 
 typedef struct s_data
 {
@@ -83,9 +86,9 @@ typedef struct s_data
 	int			*floor_color;
 	int			*ceilling_color;
 	t_player	pl;
-	t_math      math;
+	t_math		math;
 	char		**map;
-}		t_data;
+}				t_data;
 
 void	init_the_map(char *map_name, t_data *data);
 void	get_colors(char *color, int **ptr);
@@ -97,5 +100,7 @@ void	draw_walls(t_data *data);
 void	draw_buffer(int **buffer, t_data *data);
 void	get_delta_dist(t_math *m);
 int		**init_buffer(void);
+void	move_player(t_data *data, double x, double y);
+void	rotate_player(t_data *data, double i);
 
 #endif

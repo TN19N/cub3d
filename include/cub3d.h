@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/13 14:09:54 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/13 18:16:54 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define TEXTER_HIEGHT 64
 # define TEXTER_WIDTH 64
 
-# define MOVE_SPEED 1.0
+# define MOVE_SPEED 0.15
 # define ROT_SPEED 0.1
 
 # define MOVE_FORWARD 13
@@ -38,6 +38,8 @@
 # define ROT_WRIGHT 124
 
 # define ESC 53
+
+# define COLLISION 0.2
 
 typedef struct s_math
 {
@@ -77,6 +79,10 @@ typedef struct s_texture
 
 typedef struct s_player
 {
+	double		col_x;
+	double		col_y;
+	double		b_col_x;
+	double		b_col_y;
 	double		pos_x;
 	double		pos_y;
 	double		dir_x;
@@ -107,11 +113,12 @@ void	get_xpm_files(char *file_path, t_texture *t, void *ml);
 void	add_to_map(t_data *data, char *line);
 void	check_map(t_data *data);
 void	strat_ray(t_data *data);
-void	draw_walls(t_data *data);
-void	draw_buffer(int **buffer, t_data *data);
+void	draw_walls(t_data *data, t_texture *img_t);
+void	draw_buffer(int	**buffer, t_texture *img_t);
 void	get_delta_dist(t_math *m);
 int		**init_buffer(void);
 void	move_player(t_data *data, double x, double y);
 void	rotate_player(t_data *data, double i);
+void	check_col(t_data *data);
 
 #endif

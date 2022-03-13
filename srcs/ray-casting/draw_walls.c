@@ -6,10 +6,11 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 07:18:34 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/13 14:06:18 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/13 15:13:10 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "../../include/cub3d.h"
 
 void	start_drawing(t_data *data, t_math *math, int x)
@@ -17,6 +18,9 @@ void	start_drawing(t_data *data, t_math *math, int x)
 	int	i;
 	int	*color;
 
+	i = -1;
+	while (++i < math->draw_start)
+		math->buffer[i][x] = *data->ceilling_color;
 	i = math->draw_start;
 	while (i < math->draw_end)
 	{
@@ -27,18 +31,20 @@ void	start_drawing(t_data *data, t_math *math, int x)
 		math->buffer[i][x] = *color;
 		i++;
 	}
+	i = math->draw_end;
+	if (i < 0)
+		return ;
+	while (++i < WINDOW_HIEGHT)
+		math->buffer[i][x] = *data->floor_color;
 }
 
 void	get_line_to_draw(t_data *data, t_math *m)
 {
-	int	pitch;
-
-	pitch = 0;
 	m->line_height = (int)(WINDOW_HIEGHT / m->perp_wall_dist);
-	m->draw_start = -m->line_height / 2 + WINDOW_HIEGHT / 2 + pitch;
+	m->draw_start = -m->line_height / 2 + WINDOW_HIEGHT / 2;
 	if (m->draw_start < 0)
 		m->draw_start = 0;
-	m->draw_end = m->line_height / 2 + WINDOW_HIEGHT / 2 + pitch;
+	m->draw_end = m->line_height / 2 + WINDOW_HIEGHT / 2;
 	if (m->draw_end >= WINDOW_HIEGHT)
 		m->draw_end = WINDOW_HIEGHT - 1;
 	if (m->side == 0)
@@ -52,7 +58,7 @@ void	get_line_to_draw(t_data *data, t_math *m)
 	if (m->side == 1 && m->raydir_y < 0)
 		m->tex_x = TEXTER_WIDTH - m->tex_x - 1;
 	m->step = 1.0 * TEXTER_HIEGHT / m->line_height;
-	m->tex_pos = (m->draw_start - pitch - WINDOW_HIEGHT / \
+	m->tex_pos = (m->draw_start - WINDOW_HIEGHT / \
 	2 + m->line_height / 2) * m->step;
 }
 
@@ -110,7 +116,7 @@ void	get_side_dist(t_data *data, t_math *m)
 	}
 }
 
-void	draw_walls(t_data *data)
+void	draw_walls(t_data *data, t_texture *img_t)
 {
 	t_math	*math;
 	int		i;
@@ -129,5 +135,5 @@ void	draw_walls(t_data *data)
 		get_hit_pos(data, math);
 		start_drawing(data, math, i);
 	}
-	draw_buffer(math->buffer, data);
+	draw_buffer(math->buffer, img_t);
 }

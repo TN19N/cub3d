@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 08:20:34 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/13 14:06:36 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/13 14:39:40 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,29 +42,22 @@ void	get_delta_dist(t_math *m)
 		m->delta_dist_y = fabs(1 / m->raydir_y);
 }
 
-void	draw_buffer(int	**buffer, t_data *data)
+void	draw_buffer(int	**buffer, t_texture *img_t)
 {
-	t_texture	img_t;
 	char		*tmp;
-	int			tmp1;
 	int			i;
 	int			j;
 
 	i = -1;
-	img_t.texture = mlx_new_image(data->ml, WINDOW_WIDTH, WINDOW_HIEGHT);
-	img_t.info = mlx_get_data_addr(img_t.texture, &img_t.bits, \
-	&img_t.line_len, &tmp1);
 	while (++i < WINDOW_HIEGHT)
 	{
 		j = -1;
 		while (++j < WINDOW_WIDTH)
 		{
-			tmp = img_t.info + (img_t.line_len * i + j * (img_t.bits / 8));
+			tmp = img_t->info + (img_t->line_len * i + j * (img_t->bits / 8));
 			*(unsigned int *)tmp = buffer[i][j];
 		}
 		free(buffer[i]);
 	}
 	free(buffer);
-	mlx_put_image_to_window(data->ml, data->wi, img_t.texture, 0, 0);
-	mlx_destroy_image(data->ml, img_t.texture);
 }

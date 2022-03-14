@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/14 09:52:21 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/14 12:47:37 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,11 +125,12 @@ void	strat_ray(t_data *data);
 void	draw_walls(t_data *data);
 void	get_delta_dist(t_math *m);
 int		**init_buffer(void);
-void	move_player(t_data *data, double x, double y);
-void	rotate_player(t_data *data, double i);
-void	check_col(t_data *data);
+void	move_player(t_player *p, char **map, double x, double y);
+void	rotate_player(t_player *p, double i);
+void	check_col(char **map, t_player *p);
 int		releas_key(int key, t_data *data);
 int		press_key(int key, t_data *data);
 void	put_in_image(t_data *data, int i, int j, int color);
+void	move_side_way(t_player *p, char **map, double i);
 
 #endif

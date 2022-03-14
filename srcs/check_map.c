@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 06:59:54 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/13 19:57:43 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/14 12:49:09 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	check_if_valid(t_data *data, char c, int i, int j)
 			data->pl.col_y = data->pl.pos_y + COLLISION;
 			data->pl.b_col_x = data->pl.pos_x - COLLISION;
 			data->pl.b_col_y = data->pl.pos_y - COLLISION;
-			check_col(data);
+			check_col(data->map, &data->pl);
 			data->pl.spawning = data->map[i][j];
 		}
 	}

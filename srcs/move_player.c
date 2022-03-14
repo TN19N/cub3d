@@ -6,23 +6,32 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 09:05:45 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/14 16:44:19 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/14 18:04:46 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 #include <printf.h>
 
-void	check_col(char **map, t_player *p)
+void	check_col(char **map, double *tmp_y, double *tmp_x)
 {
-	if (map[(int)p->col_y][(int)p->pos_x] == '1')
-		p->pos_y = (int)p->col_y - COLLISION;
-	if (map[(int)p->pos_y][(int)p->col_x] == '1')
-		p->pos_x = (int)p->col_x - COLLISION;
-	if (map[(int)p->pos_y][(int)p->b_col_x] == '1')
-		p->pos_x = (int)p->pos_x + COLLISION;
-	if (map[(int)p->b_col_y][(int)p->pos_x] == '1')
-		p->pos_y = (int)p->pos_y + COLLISION;
+	double	col_x;
+	double	col_y;
+	double	b_col_x;
+	double	b_col_y;
+
+	col_x = *tmp_x + COLLISION;
+	col_y = *tmp_y + COLLISION;
+	b_col_x = *tmp_x - COLLISION;
+	b_col_y = *tmp_y - COLLISION;
+	if (map[(int)col_y][(int)*tmp_x] == '1')
+		*tmp_y = (int)col_y - COLLISION;
+	if (map[(int)*tmp_y][(int)col_x] == '1')
+		*tmp_x = (int)col_x - COLLISION;
+	if (map[(int)*tmp_y][(int)b_col_x] == '1')
+		*tmp_x = (int)*tmp_x + COLLISION;
+	if (map[(int)b_col_y][(int)*tmp_x] == '1')
+		*tmp_y = (int)*tmp_y + COLLISION;
 }
 
 void	rotate_player(t_player *p, double i)
@@ -55,13 +64,9 @@ void	move_side_way(t_player *p, char **map, double i)
 	tmp_y = p->pos_y + tmp_dir_y * MOVE_SPEED;
 	if (map[(int)tmp_y][(int)tmp_x] == '0')
 	{
+		check_col(map, &tmp_y, &tmp_x);
 		p->pos_x = tmp_x;
 		p->pos_y = tmp_y;
-		p->col_x = p->pos_x + COLLISION;
-		p->col_y = p->pos_y + COLLISION;
-		p->b_col_x = p->pos_x - COLLISION;
-		p->b_col_y = p->pos_y - COLLISION;
-		check_col(map, p);
 	}
 }
 
@@ -74,12 +79,8 @@ void	move_player(t_player *p, char **map, double x, double y)
 	tmp_y = p->pos_y + p->dir_y * y * MOVE_SPEED;
 	if (map[(int)tmp_y][(int)tmp_x] == '0')
 	{
+		check_col(map, &tmp_y, &tmp_x);
 		p->pos_x = tmp_x;
 		p->pos_y = tmp_y;
-		p->col_x = p->pos_x + COLLISION;
-		p->col_y = p->pos_y + COLLISION;
-		p->b_col_x = p->pos_x - COLLISION;
-		p->b_col_y = p->pos_y - COLLISION;
-		check_col(map, p);
 	}
 }

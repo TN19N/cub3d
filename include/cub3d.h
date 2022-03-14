@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/14 12:47:37 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/14 14:37:39 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@
 
 # define WINDOW_HIEGHT 640
 # define WINDOW_WIDTH 1280
-
-# define TEXTER_HIEGHT 64
-# define TEXTER_WIDTH 64
 
 # define MOVE_SPEED 0.1
 # define ROT_SPEED 0.05
@@ -107,6 +104,7 @@ typedef struct s_data
 	t_texture	so_t;
 	t_texture	we_t;
 	t_texture	ea_t;
+	t_texture	*tar;
 	int			*floor_color;
 	int			*ceilling_color;
 	t_player	pl;
@@ -132,5 +130,6 @@ int		releas_key(int key, t_data *data);
 int		press_key(int key, t_data *data);
 void	put_in_image(t_data *data, int i, int j, int color);
 void	move_side_way(t_player *p, char **map, double i);
+void	get_right_one(t_data *data, t_math *m);
 
 #endif

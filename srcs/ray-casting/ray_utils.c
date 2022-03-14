@@ -6,11 +6,17 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 08:20:34 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/14 09:54:25 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/14 14:35:46 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+void	get_right_one(t_data *data, t_math *m)
+{
+	(void)m;
+	data->tar = &data->no_t;
+}
 
 void	get_delta_dist(t_math *m)
 {

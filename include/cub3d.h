@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/14 14:37:39 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/14 17:10:53 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ typedef struct s_math
 	int		draw_start;
 	int		draw_end;
 	int		tex_y;
+	double	old_side_y;
+	double	old_side_x;
 }			t_math;
 
 typedef struct s_texture

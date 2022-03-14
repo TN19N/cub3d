@@ -6,11 +6,11 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 12:16:09 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/11 08:27:37 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/14 21:43:41 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
 void	*ft_memset(void *s, int c, size_t len)
 {

@@ -6,11 +6,11 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 12:56:23 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/12 06:54:05 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/14 21:46:36 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "libft.h"
 
 void	ft_free_2d_array(char **arr_2d)
 {

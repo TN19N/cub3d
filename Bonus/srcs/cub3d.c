@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:18:17 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/14 20:33:50 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/14 21:10:37 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,41 @@ int	ft_clean(t_data	*data)
 	exit(EXIT_SUCCESS);
 }
 
-void	mega_init(t_data *data)
+void	init_2(t_data *data)
 {
-	data->pl.dir_x = -1.0;
-	data->pl.dir_y = 0.0;
-	data->pl.plane_x = 0.0;
-	data->pl.plane_y = 0.66;
+	if (data->pl.spawning == 'N')
+	{
+		data->pl.plane_x = 0.0;
+		data->pl.plane_y = -0.66;
+		data->pl.dir_x = 1.0;
+		data->pl.dir_y = 0.0;
+	}
+	else if (data->pl.spawning == 'S')
+	{
+		data->pl.plane_x = -0.66;
+		data->pl.plane_y = 0.0;
+		data->pl.dir_x = 0.0;
+		data->pl.dir_y = -1.0;
+	}
+}
+
+void	init_1(t_data *data)
+{
+	if (data->pl.spawning == 'E')
+	{
+		data->pl.plane_x = 0.0;
+		data->pl.plane_y = 0.66;
+		data->pl.dir_x = -1.0;
+		data->pl.dir_y = 0.0;
+	}
+	if (data->pl.spawning == 'W')
+	{
+		data->pl.plane_x = 0.66;
+		data->pl.plane_y = 0.0;
+		data->pl.dir_x = 0.0;
+		data->pl.dir_y = 1.0;
+	}
+	init_2(data);
 }
 
 int	move(t_data *data)
@@ -43,9 +72,9 @@ int	move(t_data *data)
 	if (data->key_bord[MOVE_WRIGHT] && ++i)
 		move_side_way(&data->pl, data->map, -1.0);
 	if (data->key_bord[ROT_LEFT] && ++i)
-		rotate_player(&data->pl, 1.0);
+		rotate_player(&data->pl, 1.0, 1.0);
 	if (data->key_bord[ROT_WRIGHT] && ++i)
-		rotate_player(&data->pl, -1.0);
+		rotate_player(&data->pl, -1.0, 1.0);
 	if (data->key_bord[ESC])
 		ft_clean(data);
 	if (i > 0)
@@ -64,7 +93,7 @@ int	main(int ac, char **av)
 		ft_error("malloc fail ;(");
 	data.ml = mlx_init();
 	init_the_map(av[1], &data);
-	mega_init(&data);
+	init_1(&data);
 	data.wi = mlx_new_window(data.ml, WINDOW_WIDTH, WINDOW_HIEGHT, "cub3d");
 	strat_ray(&data);
 	mlx_hook(data.wi, KEYPRESS, KEYPRESSMASK, press_key, &data);

@@ -6,11 +6,11 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 08:49:28 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/12 06:54:40 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/14 21:42:33 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
 int	ft_atoi(const char *str)
 {

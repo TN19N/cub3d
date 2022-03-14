@@ -6,14 +6,14 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/14 20:34:28 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/14 21:45:59 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "libft.h"
+# include "../../libft/libft.h"
 # include <unistd.h>
 # include <mlx.h>
 # include <math.h>
@@ -126,7 +126,7 @@ void	draw_walls(t_data *data);
 void	get_delta_dist(t_math *m);
 int		**init_buffer(void);
 void	move_player(t_player *p, char **map, double x, double y);
-void	rotate_player(t_player *p, double i);
+void	rotate_player(t_player *p, double i, double buf);
 void	check_col(char **map, double *tmp_y, double *tmp_x);
 int		releas_key(int key, t_data *data);
 int		press_key(int key, t_data *data);

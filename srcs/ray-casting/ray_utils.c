@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 08:20:34 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/14 08:14:34 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/14 09:54:25 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	put_in_image(t_data *data, int i, int j, int color)
 {
 	char		*tmp;
 	t_texture	*img_t;
-	
+
 	img_t = &data->b_img;
 	tmp = img_t->info + (img_t->line_len * i + j * (img_t->bits / 8));
 	*(unsigned int *)tmp = color;

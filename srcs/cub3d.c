@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:18:17 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/14 07:58:21 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/14 09:52:38 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	main(int ac, char **av)
 	strat_ray(&data);
 	mlx_hook(data.wi, KEYPRESS, KEYPRESSMASK, press_key, &data);
 	mlx_hook(data.wi, KEYRELEASE, KEYRELEASEMASK, releas_key, &data);
-	mlx_hook(data.wi, 17, 0L, ft_clean, &data);
+	mlx_hook(data.wi, DESTROYNOTIFY, NOEVENTMASK, ft_clean, &data);
 	mlx_loop_hook(data.ml, move, &data);
 	mlx_loop(data.ml);
 	return (EXIT_SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/14 08:13:44 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/14 09:52:21 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@
 
 # define KEYPRESS 2
 # define KEYRELEASE 3
+# define DESTROYNOTIFY 17
+
+# define NOEVENTMASK 0L
 # define KEYPRESSMASK 1L
 # define KEYRELEASEMASK 2L
 

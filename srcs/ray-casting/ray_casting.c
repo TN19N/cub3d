@@ -6,12 +6,11 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 10:18:20 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/14 08:13:23 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/14 19:41:21 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-#include <stdio.h>
 
 void	strat_ray(t_data *data)
 {

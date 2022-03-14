@@ -6,12 +6,11 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:18:17 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/14 12:46:34 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/14 20:33:50 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-#include <stdio.h>
 
 int	ft_clean(t_data	*data)
 {
@@ -63,9 +62,9 @@ int	main(int ac, char **av)
 	data.key_bord = ft_calloc(500, sizeof(int));
 	if (!data.key_bord)
 		ft_error("malloc fail ;(");
-	mega_init(&data);
 	data.ml = mlx_init();
 	init_the_map(av[1], &data);
+	mega_init(&data);
 	data.wi = mlx_new_window(data.ml, WINDOW_WIDTH, WINDOW_HIEGHT, "cub3d");
 	strat_ray(&data);
 	mlx_hook(data.wi, KEYPRESS, KEYPRESSMASK, press_key, &data);

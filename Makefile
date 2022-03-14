@@ -6,7 +6,7 @@
 #    By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/11 07:17:57 by mannouao          #+#    #+#              #
-#    Updated: 2022/03/13 21:05:41 by mannouao         ###   ########.fr        #
+#    Updated: 2022/03/14 08:06:14 by mannouao         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,9 @@ SRCS =  $(SRCS_PATH)cub3d.c \
 		$(SRCS_PATH)init_the_map.c \
 		$(SRCS_PATH)fill_data.c \
 		$(SRCS_PATH)check_map.c \
-		$(SRCS_PATH)/ray-casting/ray-casting.c \
+		$(SRCS_PATH)/ray-casting/ray_casting.c \
 		$(SRCS_PATH)/ray-casting/draw_walls.c \
-		$(SRCS_PATH)/ray-casting/draw_buffer.c \
+		$(SRCS_PATH)/ray-casting/ray_utils.c \
 		$(SRCS_PATH)move_player.c \
 		$(SRCS_PATH)utils.c
 

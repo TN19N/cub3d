@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/13 22:40:00 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/14 08:13:44 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,12 @@
 # define ROT_SPEED 0.05
 
 # define MOVE_FORWARD 13
-# define MOVE_BOCKWARD 1 
+# define MOVE_BOCKWARD 1
+# define MOVE_LEFT 0
+# define MOVE_WRIGHT 2 
 
-# define ROT_LEFT 0
-# define ROT_WRIGHT 2
+# define ROT_LEFT 123
+# define ROT_WRIGHT 124
 
 # define ESC 53
 
@@ -46,7 +48,6 @@
 
 typedef struct s_math
 {
-	int		**buffer;
 	double	tex_pos;
 	double	step;
 	int		tex_x;
@@ -109,6 +110,7 @@ typedef struct s_data
 	t_math		math;
 	char		**map;
 	int			*key_bord;
+	t_texture	b_img;
 }				t_data;
 
 void	init_the_map(char *map_name, t_data *data);
@@ -117,8 +119,7 @@ void	get_xpm_files(char *file_path, t_texture *t, void *ml);
 void	add_to_map(t_data *data, char *line);
 void	check_map(t_data *data);
 void	strat_ray(t_data *data);
-void	draw_walls(t_data *data, t_texture *img_t);
-void	draw_buffer(int	**buffer, t_texture *img_t);
+void	draw_walls(t_data *data);
 void	get_delta_dist(t_math *m);
 int		**init_buffer(void);
 void	move_player(t_data *data, double x, double y);
@@ -126,5 +127,6 @@ void	rotate_player(t_data *data, double i);
 void	check_col(t_data *data);
 int		releas_key(int key, t_data *data);
 int		press_key(int key, t_data *data);
+void	put_in_image(t_data *data, int i, int j, int color);
 
 #endif

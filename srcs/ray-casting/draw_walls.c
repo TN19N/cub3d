@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 07:18:34 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/13 21:20:28 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/14 08:13:28 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	start_drawing(t_data *data, t_math *math, int x)
 
 	i = -1;
 	while (++i < math->draw_start)
-		math->buffer[i][x] = *data->ceilling_color;
+		put_in_image(data, i, x, *(data->ceilling_color));
 	i = math->draw_start;
 	while (i < math->draw_end)
 	{
@@ -27,14 +27,14 @@ void	start_drawing(t_data *data, t_math *math, int x)
 		math->tex_pos += math->step;
 		color = (int *)data->no_t.info + ((TEXTER_HIEGHT * math->tex_y) + \
 		(math->tex_x * (data->no_t.bits / 8)));
-		math->buffer[i][x] = *color;
+		put_in_image(data, i, x, *color);
 		i++;
 	}
 	i = math->draw_end;
 	if (i < 0)
 		return ;
 	while (++i < WINDOW_HIEGHT)
-		math->buffer[i][x] = *data->floor_color;
+		put_in_image(data, i, x, *(data->floor_color));
 }
 
 void	get_line_to_draw(t_data *data, t_math *m)
@@ -115,14 +115,13 @@ void	get_side_dist(t_data *data, t_math *m)
 	}
 }
 
-void	draw_walls(t_data *data, t_texture *img_t)
+void	draw_walls(t_data *data)
 {
 	t_math	*math;
 	int		i;
 
 	i = -1;
 	math = &data->math;
-	math->buffer = init_buffer();
 	while (++i < WINDOW_WIDTH)
 	{
 		math->camera_x = 2 * i / (double)WINDOW_WIDTH - 1.0;
@@ -134,5 +133,4 @@ void	draw_walls(t_data *data, t_texture *img_t)
 		get_hit_pos(data, math);
 		start_drawing(data, math, i);
 	}
-	draw_buffer(math->buffer, img_t);
 }

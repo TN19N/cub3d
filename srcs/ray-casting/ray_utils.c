@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray-casting.c                                      :+:      :+:    :+:   */
+/*   ray_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/12 10:18:20 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/13 15:12:37 by mannouao         ###   ########.fr       */
+/*   Created: 2022/03/13 08:20:34 by mannouao          #+#    #+#             */
+/*   Updated: 2022/03/14 08:14:34 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-#include <stdio.h>
 
-void	strat_ray(t_data *data)
+void	get_delta_dist(t_math *m)
 {
-	int			tmp;
-	t_texture	img_t;
+	if (m->raydir_x == 0)
+		m->delta_dist_x = 1e30;
+	else
+		m->delta_dist_x = fabs(1 / m->raydir_x);
+	if (m->raydir_y == 0)
+		m->delta_dist_y = 1e30;
+	else
+		m->delta_dist_y = fabs(1 / m->raydir_y);
+}
 
-	img_t.texture = mlx_new_image(data->ml, WINDOW_WIDTH, WINDOW_HIEGHT);
-	img_t.info = mlx_get_data_addr(img_t.texture, &img_t.bits, \
-	&img_t.line_len, &tmp);
-	draw_walls(data, &img_t);
-	mlx_put_image_to_window(data->ml, data->wi, img_t.texture, 0, 0);
-	mlx_destroy_image(data->ml, img_t.texture);
+void	put_in_image(t_data *data, int i, int j, int color)
+{
+	char		*tmp;
+	t_texture	*img_t;
+	
+	img_t = &data->b_img;
+	tmp = img_t->info + (img_t->line_len * i + j * (img_t->bits / 8));
+	*(unsigned int *)tmp = color;
 }

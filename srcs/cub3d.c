@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:18:17 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/13 22:40:12 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/14 07:58:21 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ int	move(t_data *data)
 		move_player(data, 1.0, 1.0);
 	if (data->key_bord[MOVE_BOCKWARD] && ++i)
 		move_player(data, -1.0, -1.0);
+	if (data->key_bord[MOVE_LEFT] && ++i)
+		move_player(data, 1.0, -1.0);
+	if (data->key_bord[MOVE_WRIGHT] && ++i)
+		move_player(data, -1.0, 1.0);
 	if (data->key_bord[ROT_LEFT] && ++i)
 		rotate_player(data, 1.0);
 	if (data->key_bord[ROT_WRIGHT] && ++i)

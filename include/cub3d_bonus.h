@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/15 07:34:09 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/15 08:19:35 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,5 +132,6 @@ int		press_key(int key, t_data *data);
 void	put_in_image(t_data *data, int i, int j, int color);
 void	move_side_way(t_player *p, char **map, double i);
 void	get_right_one(t_data *data, t_math *m);
+void	check_format(char *map_name, char *format);
 
 #endif

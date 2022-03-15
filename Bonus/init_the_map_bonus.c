@@ -6,19 +6,24 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 08:20:02 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/15 07:31:07 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/15 08:24:32 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d_bonus.h"
 
-void	check_format(char *map_name)
+void	check_format(char *map_name, char *format)
 {
 	char	*tmp_str;
 
 	tmp_str = ft_strrchr(map_name, '.');
-	if (!tmp_str || ft_strcmp(tmp_str, ".cub"))
-		ft_error("the map should be .cub format");
+	if (!tmp_str || ft_strcmp(tmp_str, format))
+	{
+		if (!ft_strcmp(format, ".cub"))
+			ft_error("the map should be .cub format");
+		if (!ft_strcmp(format, ".xpm"))
+			ft_error("the texturs should be .xpm format");
+	}
 }
 
 int	check_if_all_fill(t_data *data)
@@ -91,7 +96,7 @@ void	init_the_map(char *map_name, t_data *data)
 	data->floor_color = NULL;
 	data->ceilling_color = NULL;
 	data->map = NULL;
-	check_format(map_name);
+	check_format(map_name, ".cub");
 	fd = open(map_name, O_RDONLY);
 	if (fd == -1)
 		ft_error("open the map faild");

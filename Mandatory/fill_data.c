@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 11:36:38 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/15 07:31:57 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/15 08:22:59 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	get_xpm_files(char *file_path, t_texture *t, void *ml)
 
 	if (t->texture)
 		ft_error("you entered different textures for same element");
+	check_format(file_path, ".xpm");
 	t->texture = mlx_xpm_file_to_image(ml, file_path, &t->width, &t->hight);
 	if (!t->texture)
 		ft_error("envalid texter !!");

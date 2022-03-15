@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 07:18:34 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/15 07:31:18 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/15 08:10:20 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ void	start_drawing(t_data *data, t_math *math, int x)
 		math->tex_pos += math->step;
 		color = (int *)data->tar->info + (data->tar->hight * math->tex_y \
 		+ math->tex_x);
-		put_in_image(data, i, x, *color);
+		if (math->side == 1)
+			put_in_image(data, i, x, (*color >> 1) & 8355711);
+		else
+			put_in_image(data, i, x, *color);
 		i++;
 	}
 	i = math->draw_end;

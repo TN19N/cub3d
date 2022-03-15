@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/15 07:23:07 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/15 08:22:01 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <math.h>
 # include <stdlib.h>
 
-# define WINDOW_HIEGHT 640
-# define WINDOW_WIDTH 1280
+# define WINDOW_HIEGHT 900
+# define WINDOW_WIDTH 1800
 
 # define MOVE_SPEED 0.1
 # define ROT_SPEED 0.05
@@ -127,5 +127,6 @@ int		press_key(int key, t_data *data);
 void	put_in_image(t_data *data, int i, int j, int color);
 void	move_side_way(t_player *p, char **map, double i);
 void	get_right_one(t_data *data, t_math *m);
+void	check_format(char *map_name, char *format);
 
 #endif

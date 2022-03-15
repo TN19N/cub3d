@@ -6,15 +6,18 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 14:02:37 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/12 09:52:53 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/15 07:06:17 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# define BUFFER_SIZE 1
+
 # include <stdlib.h>
 # include <unistd.h>
+# include <fcntl.h>
 
 //#1
 int		ft_atoi(const char *str);

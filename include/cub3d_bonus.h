@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/14 21:45:59 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/15 07:34:09 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 
-# include "../../libft/libft.h"
+# include "libft.h"
 # include <unistd.h>
 # include <mlx.h>
 # include <math.h>
 # include <stdlib.h>
-# include <fcntl.h>
 
 # define WINDOW_HIEGHT 640
 # define WINDOW_WIDTH 1280

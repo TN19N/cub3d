@@ -6,12 +6,11 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 09:30:12 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/14 21:42:55 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/15 07:21:18 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#define BUFFER_SIZE 1
+#include "../include/libft.h"
 
 int	if_is_ther(char *saver)
 {

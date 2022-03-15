@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_player.c                                      :+:      :+:    :+:   */
+/*   move_player_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 09:05:45 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/14 21:25:40 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/15 07:31:10 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
-#include <printf.h>
+#include "../include/cub3d_bonus.h"
 
 void	check_col(char **map, double *tmp_y, double *tmp_x)
 {

@@ -6,11 +6,11 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 11:17:13 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/14 21:42:43 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/15 07:21:11 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 int	ft_count_2d_array(char **arr_2d)
 {

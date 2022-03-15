@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_data.c                                        :+:      :+:    :+:   */
+/*   fill_data_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 11:36:38 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/14 21:19:02 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/15 07:31:04 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include/cub3d_bonus.h"
 
 void	add_to_map(t_data *data, char *line)
 {

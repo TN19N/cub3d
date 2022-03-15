@@ -6,11 +6,11 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 17:55:02 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/14 21:44:11 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/15 07:22:14 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 int	ft_strcmp(const char *s1, const char *s2)
 {

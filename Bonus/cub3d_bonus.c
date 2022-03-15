@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:18:17 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/15 07:31:00 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/15 09:13:33 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 int	ft_clean(t_data	*data)
 {
 	ft_free_2d_array(data->map);
-	free(data->floor_color);
-	free(data->ceilling_color);
 	free(data->key_bord);
 	exit(EXIT_SUCCESS);
 }

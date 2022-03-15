@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/15 08:19:35 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/15 11:04:24 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,22 @@ typedef struct s_math
 	int		side;
 	int		step_x;
 	int		step_y;
+	double	floor_step_x;
+	double	floor_step_y;
 	int		line_height;
 	double	perp_wall_dist;
 	double	side_dist_x;
 	double	side_dist_y;
 	double	raydir_x;
 	double	raydir_y;
+	double	floor_x;
+	double	floor_y;
+	int		cell_x;
+	int		cell_y;
+	double	raydir_x1;
+	double	raydir_y1;
+	double	raydir_x2;
+	double	raydir_y2;
 	double	delta_dist_x;
 	double	delta_dist_y;
 	int		map_x;
@@ -68,6 +78,7 @@ typedef struct s_math
 	int		draw_start;
 	int		draw_end;
 	int		tex_y;
+	double	row_distance;
 	double	old_side_y;
 	double	old_side_x;
 }			t_math;
@@ -105,9 +116,9 @@ typedef struct s_data
 	t_texture	so_t;
 	t_texture	we_t;
 	t_texture	ea_t;
+	t_texture	fl_t;
+	t_texture	ce_t;
 	t_texture	*tar;
-	int			*floor_color;
-	int			*ceilling_color;
 	t_player	pl;
 	t_math		math;
 	char		**map;
@@ -121,7 +132,7 @@ void	get_xpm_files(char *file_path, t_texture *t, void *ml);
 void	add_to_map(t_data *data, char *line);
 void	check_map(t_data *data);
 void	strat_ray(t_data *data);
-void	draw_walls(t_data *data);
+void	draw_walls(t_data *data, t_math *math);
 void	get_delta_dist(t_math *m);
 int		**init_buffer(void);
 void	move_player(t_player *p, char **map, double x, double y);
@@ -133,5 +144,6 @@ void	put_in_image(t_data *data, int i, int j, int color);
 void	move_side_way(t_player *p, char **map, double i);
 void	get_right_one(t_data *data, t_math *m);
 void	check_format(char *map_name, char *format);
+void	draw_up_down(t_data *data, t_math *math);
 
 #endif

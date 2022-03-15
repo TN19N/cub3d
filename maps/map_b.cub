@@ -2,8 +2,8 @@ EA ./textures/xpm/redbrick.xpm
 WE ./textures/xpm/redbrick.xpm
 NO ./textures/xpm/redbrick.xpm
 SO ./textures/xpm/redbrick.xpm
-F 154,154,154
-C 92,92,92
+F ./textures/xpm/wood.xpm
+C ./textures/xpm/greystone.xpm
 
         1111111111111111111111111
         1000000000110000000000001

@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 07:18:34 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/15 08:10:20 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/15 09:34:11 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@ void	start_drawing(t_data *data, t_math *math, int x)
 	int	i;
 	int	*color;
 
-	i = -1;
-	while (++i < math->draw_start)
-		put_in_image(data, i, x, *(data->ceilling_color));
 	i = math->draw_start;
 	while (i < math->draw_end)
 	{
@@ -33,11 +30,6 @@ void	start_drawing(t_data *data, t_math *math, int x)
 			put_in_image(data, i, x, *color);
 		i++;
 	}
-	i = math->draw_end;
-	if (i < 0)
-		return ;
-	while (++i < WINDOW_HIEGHT)
-		put_in_image(data, i, x, *(data->floor_color));
 }
 
 void	get_line_to_draw(t_data *data, t_math *m)
@@ -121,13 +113,11 @@ void	get_side_dist(t_data *data, t_math *m)
 	m->old_side_y = m->side_dist_y;
 }
 
-void	draw_walls(t_data *data)
+void	draw_walls(t_data *data, t_math *math)
 {
-	t_math	*math;
-	int		i;
+	int	i;
 
 	i = -1;
-	math = &data->math;
 	while (++i < WINDOW_WIDTH)
 	{
 		math->camera_x = 2 * i / (double)WINDOW_WIDTH - 1.0;

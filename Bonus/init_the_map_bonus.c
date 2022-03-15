@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 08:20:02 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/15 09:12:35 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/15 20:12:48 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	check_format(char *map_name, char *format)
 		if (!ft_strcmp(format, ".cub"))
 			ft_error("the map should be .cub format");
 		if (!ft_strcmp(format, ".xpm"))
-			ft_error("the texturs should be .xpm format");
+			ft_error("the texturs should be .png format");
 	}
 }
 

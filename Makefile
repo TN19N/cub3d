@@ -6,10 +6,11 @@
 #    By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/11 07:17:57 by mannouao          #+#    #+#              #
-#    Updated: 2022/03/15 10:26:56 by mannouao         ###   ########.fr        #
+#    Updated: 2022/03/16 07:49:06 by mannouao         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+MLX = libmlx.dylib
 NAME_BONUS = cub3d_bonus
 NAME = cub3d
 CC = gcc
@@ -42,29 +43,35 @@ OBJS = $(SRCS:.c=.o)
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 CFLAGS = -Wall -Wextra -Werror
-XFLAGS = -lmlx -framework OpenGL -framework Appkit
+XFLAGS = -Lmlx -lmlx -framework OpenGL -framework Appkit -lm
 RM = rm -f
 
 all : $(NAME)
 
-$(NAME) : $(OBJS)
-	make -C libft
+$(NAME) : $(OBJS) $(LIBFT) $(MLX)
 	$(CC) $(CFLAGS) $(XFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+
+$(LIBFT) :
+	make -C libft
+
+$(MLX) :
+	make -C mlx
 
 bonus : $(NAME_BONUS)
 
-$(NAME_BONUS) : $(OBJS_BONUS)
-	make -C libft
+$(NAME_BONUS) : $(OBJS_BONUS) $(LIBFT) $(MLX)
 	$(CC) $(CFLAGS) $(XFLAGS) $(OBJS_BONUS) $(LIBFT) -o $(NAME_BONUS)
 
 ./srcs/%.o : %.c
 	$(CC) $(CFLAGS) -c $<
 
 clean :
+	make -C mlx clean
 	make -C libft clean
 	$(RM) $(OBJS) $(OBJS_BONUS)
 
 fclean : clean
+	make -C mlx fclean
 	make -C libft fclean
 	$(RM) $(NAME) $(NAME_BONUS)
 

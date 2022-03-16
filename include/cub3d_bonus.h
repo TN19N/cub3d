@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/15 19:46:05 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/16 07:44:23 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "libft.h"
 # include <unistd.h>
-# include <mlx.h>
+# include "../mlx/mlx.h"
 # include <math.h>
 # include <stdlib.h>
 

@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 10:18:20 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/16 16:28:46 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/16 21:13:30 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	strat_ray(t_data *data)
 	&img_t->line_len, &tmp);
 	draw_up_down(data, math);
 	draw_walls(data, math);
+	data->gun.blank_img = data->b_img.texture;
 	mlx_put_image_to_window(data->ml, data->wi, img_t->texture, 0, 0);
 	mlx_destroy_image(data->ml, img_t->texture);
 	free(math);

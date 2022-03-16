@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/16 18:17:08 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/16 20:09:51 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <math.h>
 # include <stdlib.h>
 
-# define WINDOW_HIEGHT 480
-# define WINDOW_WIDTH 640
+# define WINDOW_HIEGHT 640
+# define WINDOW_WIDTH 1000
 
 # define MOVE_SPEED 0.1
 # define ROT_SPEED 0.1
@@ -32,6 +32,8 @@
 
 # define ROT_LEFT 123
 # define ROT_WRIGHT 124
+
+# define RELOAD_GUN 15
 
 # define ESC 53
 
@@ -112,6 +114,15 @@ typedef struct s_player
 	char		spawning;
 }				t_player;
 
+typedef struct s_gun
+{
+	void	*blank_img;
+	int		fired;
+	int		fire_index;
+	int		gun_reload;
+	int		reload_index;
+}	t_gun;
+
 typedef struct s_data
 {
 	int			pitch;
@@ -128,6 +139,7 @@ typedef struct s_data
 	char		**map;
 	int			*key_bord;
 	t_texture	b_img;
+	t_gun		gun;
 }				t_data;
 
 void	init_the_map(char *map_name, t_data *data);
@@ -151,5 +163,11 @@ void	check_format(char *map_name, char *format);
 void	draw_up_down(t_data *data, t_math *math);
 int		add_darck(int color, float x);
 int		mouse(int x, int y, t_data *data);
+int		handle_mouse_button(int button, int x, int y, t_gun *gun);
+void	reload_gun(t_gun *gun);
+void	gun_inamation(t_data *data, t_gun *gun);
+void	fire_animation(t_data *data, t_gun *gun);
+void	fire_gun(t_gun *gun);
+void	file_name(char *c, char *path, int filenum);
 
 #endif

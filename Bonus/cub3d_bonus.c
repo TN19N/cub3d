@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:18:17 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/16 17:56:22 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/16 21:11:37 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ int	ft_clean(t_data	*data)
 
 void	init_2(t_data *data)
 {
+	data->gun.fire_index = 50;
+	data->gun.fired = 0;
+	data->gun.reload_index = 50;
+	data->gun.gun_reload = 0;
 	if (data->pl.spawning == 'N')
 	{
 		data->pl.plane_x = 0.0;
@@ -74,8 +78,11 @@ int	move(t_data *data)
 		rotate_player(&data->pl, 1.0);
 	if (data->key_bord[ROT_WRIGHT] && ++i)
 		rotate_player(&data->pl, -1.0);
+	//if (data->key_bord[RELOAD_GUN])
+	//	reload_gun(&data->gun);
 	if (data->key_bord[ESC])
 		ft_clean(data);
+	//gun_inamation(data, &data->gun);
 	if (i > 0)
 		strat_ray(data);
 	return (0);
@@ -97,7 +104,8 @@ int	main(int ac, char **av)
 	strat_ray(&data);
 	mlx_mouse_hide();
 	mlx_mouse_move(data.wi, WINDOW_WIDTH / 2, 0);
-	mlx_hook(data.wi, MOTIONNOTIFY, POINTERMOTIONMASK, mouse, &data);
+	//mlx_key_hook(data.wi, handle_mouse_button, &data.gun);
+	//mlx_hook(data.wi, MOTIONNOTIFY, POINTERMOTIONMASK, mouse, &data);
 	mlx_hook(data.wi, KEYPRESS, KEYPRESSMASK, press_key, &data);
 	mlx_hook(data.wi, KEYRELEASE, KEYRELEASEMASK, releas_key, &data);
 	mlx_hook(data.wi, DESTROYNOTIFY, NOEVENTMASK, ft_clean, &data);

@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:18:17 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/16 07:22:27 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/16 10:30:11 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,15 +80,6 @@ int	move(t_data *data)
 	return (0);
 }
 
-# include <stdio.h>
-
-int	mouse(int key, t_data *data)
-{
-	(void)data;
-	printf("%d\n", key);
-	return (0);
-}
-
 int	main(int ac, char **av)
 {
 	t_data	data;
@@ -103,7 +94,6 @@ int	main(int ac, char **av)
 	init_1(&data);
 	data.wi = mlx_new_window(data.ml, WINDOW_WIDTH, WINDOW_HIEGHT, "cub3d");
 	strat_ray(&data);
-	mlx_key_hook(data.wi, mouse, &data);
 	mlx_hook(data.wi, KEYPRESS, KEYPRESSMASK, press_key, &data);
 	mlx_hook(data.wi, KEYRELEASE, KEYRELEASEMASK, releas_key, &data);
 	mlx_hook(data.wi, DESTROYNOTIFY, NOEVENTMASK, ft_clean, &data);

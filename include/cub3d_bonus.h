@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/16 07:44:23 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/16 10:27:06 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "libft.h"
 # include <unistd.h>
-# include "../mlx/mlx.h"
+# include "mlx.h"
 # include <math.h>
 # include <stdlib.h>
 
@@ -47,40 +47,40 @@
 
 typedef struct s_math
 {
-	double	tex_pos;
-	double	step;
+	float	tex_pos;
+	float	step;
 	int		tex_x;
-	double	camera_x;
+	float	camera_x;
 	int		side;
 	int		step_x;
 	int		step_y;
-	double	floor_step_x;
-	double	floor_step_y;
+	float	floor_step_x;
+	float	floor_step_y;
 	int		line_height;
-	double	perp_wall_dist;
-	double	side_dist_x;
-	double	side_dist_y;
-	double	raydir_x;
-	double	raydir_y;
-	double	floor_x;
-	double	floor_y;
+	float	perp_wall_dist;
+	float	side_dist_x;
+	float	side_dist_y;
+	float	raydir_x;
+	float	raydir_y;
+	float	floor_x;
+	float	floor_y;
 	int		cell_x;
 	int		cell_y;
-	double	raydir_x1;
-	double	raydir_y1;
-	double	raydir_x2;
-	double	raydir_y2;
-	double	delta_dist_x;
-	double	delta_dist_y;
+	float	raydir_x1;
+	float	raydir_y1;
+	float	raydir_x2;
+	float	raydir_y2;
+	float	delta_dist_x;
+	float	delta_dist_y;
 	int		map_x;
 	int		map_y;
-	double	wall_x;
+	float	wall_x;
 	int		draw_start;
 	int		draw_end;
 	int		tex_y;
-	double	row_distance;
-	double	old_side_y;
-	double	old_side_x;
+	float	row_distance;
+	float	old_side_y;
+	float	old_side_x;
 }			t_math;
 
 typedef struct s_texture
@@ -95,16 +95,16 @@ typedef struct s_texture
 
 typedef struct s_player
 {
-	double		col_x;
-	double		col_y;
-	double		b_col_x;
-	double		b_col_y;
-	double		pos_x;
-	double		pos_y;
-	double		dir_x;
-	double		dir_y;
-	double		plane_x;
-	double		plane_y;
+	float		col_x;
+	float		col_y;
+	float		b_col_x;
+	float		b_col_y;
+	float		pos_x;
+	float		pos_y;
+	float		dir_x;
+	float		dir_y;
+	float		plane_x;
+	float		plane_y;
 	char		spawning;
 }				t_player;
 
@@ -135,13 +135,13 @@ void	strat_ray(t_data *data);
 void	draw_walls(t_data *data, t_math *math);
 void	get_delta_dist(t_math *m);
 int		**init_buffer(void);
-void	move_player(t_player *p, char **map, double x, double y);
-void	rotate_player(t_player *p, double i, double buf);
-void	check_col(char **map, double *tmp_y, double *tmp_x);
+void	move_player(t_player *p, char **map, float x, float y);
+void	rotate_player(t_player *p, float i, float buf);
+void	check_col(char **map, float *tmp_y, float *tmp_x);
 int		releas_key(int key, t_data *data);
 int		press_key(int key, t_data *data);
 void	put_in_image(t_data *data, int i, int j, int color);
-void	move_side_way(t_player *p, char **map, double i);
+void	move_side_way(t_player *p, char **map, float i);
 void	get_right_one(t_data *data, t_math *m);
 void	check_format(char *map_name, char *format);
 void	draw_up_down(t_data *data, t_math *math);

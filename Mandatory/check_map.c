@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 06:59:54 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/15 07:31:50 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/16 10:12:38 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int	check_if_valid(t_data *data, char c, int i, int j)
 			ft_error("you entered more than one player :)");
 		else
 		{
-			data->pl.pos_x = (double)j;
-			data->pl.pos_y = (double)i;
+			data->pl.pos_x = (float)j;
+			data->pl.pos_y = (float)i;
 			data->pl.spawning = data->map[i][j];
 			data->map[i][j] = '0';
 		}

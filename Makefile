@@ -6,11 +6,11 @@
 #    By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/11 07:17:57 by mannouao          #+#    #+#              #
-#    Updated: 2022/03/16 07:49:06 by mannouao         ###   ########.fr        #
+#    Updated: 2022/03/16 10:25:47 by mannouao         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-MLX = libmlx.dylib
+MLX = mlx/libmlx.a
 NAME_BONUS = cub3d_bonus
 NAME = cub3d
 CC = gcc
@@ -43,13 +43,13 @@ OBJS = $(SRCS:.c=.o)
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 CFLAGS = -Wall -Wextra -Werror
-XFLAGS = -Lmlx -lmlx -framework OpenGL -framework Appkit -lm
+XFLAGS = -framework OpenGL -framework AppKit
 RM = rm -f
 
 all : $(NAME)
 
-$(NAME) : $(OBJS) $(LIBFT) $(MLX)
-	$(CC) $(CFLAGS) $(XFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+$(NAME) :  $(LIBFT) $(MLX) $(OBJS)
+	$(CC) $(CFLAGS) $(XFLAGS) $(MLX) $(OBJS) $(LIBFT) -o $(NAME)
 
 $(LIBFT) :
 	make -C libft
@@ -59,20 +59,20 @@ $(MLX) :
 
 bonus : $(NAME_BONUS)
 
-$(NAME_BONUS) : $(OBJS_BONUS) $(LIBFT) $(MLX)
-	$(CC) $(CFLAGS) $(XFLAGS) $(OBJS_BONUS) $(LIBFT) -o $(NAME_BONUS)
+$(NAME_BONUS) : $(LIBFT) $(MLX) $(OBJS_BONUS) 
+	$(CC) $(CFLAGS) $(XFLAGS) $(MLX) $(OBJS_BONUS) $(LIBFT) -o $(NAME_BONUS)
 
 ./srcs/%.o : %.c
 	$(CC) $(CFLAGS) -c $<
 
 clean :
-	make -C mlx clean
 	make -C libft clean
+	make -C mlx clean
 	$(RM) $(OBJS) $(OBJS_BONUS)
 
 fclean : clean
-	make -C mlx fclean
 	make -C libft fclean
+	make -C mlx fclean
 	$(RM) $(NAME) $(NAME_BONUS)
 
 re : fclean all 

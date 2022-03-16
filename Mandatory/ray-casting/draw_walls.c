@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 07:18:34 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/15 07:31:41 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/16 10:13:09 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	get_line_to_draw(t_data *data, t_math *m)
 		m->wall_x = data->pl.pos_x + m->perp_wall_dist * m->raydir_x;
 	m->wall_x -= floor((m->wall_x));
 	get_right_one(data, m);
-	m->tex_x = (int)(m->wall_x * (double)data->tar->width);
+	m->tex_x = (int)(m->wall_x * (float)data->tar->width);
 	if (m->side == 0 && m->raydir_x > 0)
 		m->tex_x = data->tar->width - m->tex_x - 1;
 	if (m->side == 1 && m->raydir_y < 0)
@@ -127,7 +127,7 @@ void	draw_walls(t_data *data)
 	math = &data->math;
 	while (++i < WINDOW_WIDTH)
 	{
-		math->camera_x = 2 * i / (double)WINDOW_WIDTH - 1.0;
+		math->camera_x = 2 * i / (float)WINDOW_WIDTH - 1.0;
 		math->raydir_x = data->pl.dir_x + data->pl.plane_x * math->camera_x;
 		math->raydir_y = data->pl.dir_y + data->pl.plane_y * math->camera_x;
 		math->map_x = (int)data->pl.pos_x;

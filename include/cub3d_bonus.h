@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/16 17:57:48 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/16 18:17:08 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@
 # include <math.h>
 # include <stdlib.h>
 
-# define WINDOW_HIEGHT 640
-# define WINDOW_WIDTH 1280
+# define WINDOW_HIEGHT 480
+# define WINDOW_WIDTH 640
 
 # define MOVE_SPEED 0.1
-# define ROT_SPEED 0.05
+# define ROT_SPEED 0.1
 
 # define MOVE_FORWARD 13
 # define MOVE_BOCKWARD 1

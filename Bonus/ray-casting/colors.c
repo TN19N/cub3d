@@ -6,11 +6,11 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 15:42:58 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/16 16:45:17 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/16 17:32:17 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../../include/cub3d.h"
+# include "../../include/cub3d_bonus.h"
 
 int	get_r(int trgb)
 {
@@ -27,20 +27,27 @@ int	get_b(int trgb)
 	return (trgb & 0xFF);
 }
 
-# include <stdio.h>
-
-int	add_darck(int color, t_math *math)
+int	add_darck(int color, float x)
 {
 	int	r;
 	int	b;
 	int	g;
+	float	per;
 
-	(void)math;
+	if (x > 10.0)
+		return (0);
+	per = x / DARCK;
 	r = get_r(color);
 	b = get_b(color);
 	g = get_g(color);
-	r = r / 2;
-	b = b / 2;
-	g = g / 2;
+	r -= (r * per);
+	b -= (b * per);
+	g -= (g * per);
+	if (r < 0)
+		r = 0;
+	if (b < 0)
+		b = 0;
+	if (g < 0)
+		g = 0;
 	return (0x0 << 24 | r << 16 | g << 8 | b);
 }

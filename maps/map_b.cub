@@ -1,9 +1,9 @@
 EA ./textures/xpm/redbrick.xpm
-WE ./textures/xpm/eagle.xpm
+WE ./textures/xpm/redbrick.xpm
 NO ./textures/xpm/redbrick.xpm
 SO ./textures/xpm/redbrick.xpm
-F ./textures/xpm/sky_1.xpm
-C ./textures/xpm/sky_1.xpm
+F ./textures/xpm/purplestone.xpm
+C ./textures/xpm/colorstone.xpm
 
         1111111111111111111111111
         1000000000110000000000001

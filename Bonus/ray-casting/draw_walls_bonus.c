@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 07:18:34 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/16 16:43:43 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/16 17:34:27 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,12 @@ void	start_drawing(t_data *data, t_math *math, int x)
 		color = (int *)data->tar->info + (data->tar->hight * math->tex_y \
 		+ math->tex_x);
 		if (math->side == 1)
-			put_in_image(data, i, x, add_darck(*color, math));
+			put_in_image(data, i, x, add_darck(*color, math->perp_wall_dist));
 		else
-			put_in_image(data, i, x, add_darck(*color, math));
+			put_in_image(data, i, x, add_darck(*color, math->perp_wall_dist));
 		i++;
 	}
 }
-
-# include <stdio.h>
 
 void	get_line_to_draw(t_data *data, t_math *m)
 {

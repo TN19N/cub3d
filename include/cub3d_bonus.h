@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/16 16:28:53 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/16 17:34:18 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@
 # define KEYRELEASEMASK 2L
 # define POINTERMOTIONMASK 6L
 
-# define PI 3.14159265359
+# define DARCK 4
 
 typedef struct s_math
 {
@@ -149,6 +149,6 @@ void	move_side_way(t_player *p, char **map, float i);
 void	get_right_one(t_data *data, t_math *m);
 void	check_format(char *map_name, char *format);
 void	draw_up_down(t_data *data, t_math *math);
-int		add_darck(int color, t_math *math);
+int		add_darck(int color, float x);
 
 #endif

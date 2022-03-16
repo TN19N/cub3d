@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 09:35:57 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/16 07:00:06 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/16 17:24:22 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	put_cell(t_data *data, t_math *math, int y, int x)
 	ty = (int)(data->ce_t.hight * (math->floor_y - math->cell_y)) * \
 	(data->ce_t.bits / 8);
 	color = (int *)(data->ce_t.info + ((data->ce_t.width * ty) + tx));
-	put_in_image(data, WINDOW_HIEGHT - y - 1, x, (*color >> 1) & 8355711);
+	put_in_image(data, WINDOW_HIEGHT - y - 1, x, add_darck(*color, math->row_distance));
 }
 
 void	put_floor(t_data *data, t_math *math, int y, int x)
@@ -48,7 +48,7 @@ void	put_floor(t_data *data, t_math *math, int y, int x)
 	ty = (int)(data->fl_t.hight * (math->floor_y - math->cell_y)) * \
 	(data->fl_t.bits / 8);
 	color = (int *)(data->fl_t.info + ((data->fl_t.width * ty) + tx));
-	put_in_image(data, y, x, (*color >> 1) & 8355711);
+	put_in_image(data, y, x, add_darck(*color, math->row_distance));
 }
 
 void	start_drawing_up_down(t_data *data, t_math *math, int y)

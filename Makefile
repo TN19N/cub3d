@@ -6,11 +6,11 @@
 #    By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/11 07:17:57 by mannouao          #+#    #+#              #
-#    Updated: 2022/03/16 10:25:47 by mannouao         ###   ########.fr        #
+#    Updated: 2022/03/16 16:04:53 by mannouao         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-MLX = mlx/libmlx.a
+MLX = libmlx.dylib
 NAME_BONUS = cub3d_bonus
 NAME = cub3d
 CC = gcc
@@ -36,6 +36,7 @@ SRCS_BONUS =  $(SRCS_PATH_BONUS)cub3d_bonus.c \
 		$(SRCS_PATH_BONUS)ray-casting/draw_walls_bonus.c \
 		$(SRCS_PATH_BONUS)ray-casting/ray_utils_bonus.c \
 		$(SRCS_PATH_BONUS)ray-casting/draw_up_down_bonus.c \
+		$(SRCS_PATH_BONUS)ray-casting/colors.c \
 		$(SRCS_PATH_BONUS)move_player_bonus.c \
 		$(SRCS_PATH_BONUS)utils_bonus.c
 
@@ -56,6 +57,7 @@ $(LIBFT) :
 
 $(MLX) :
 	make -C mlx
+	mv mlx/$(MLX) .
 
 bonus : $(NAME_BONUS)
 
@@ -72,7 +74,6 @@ clean :
 
 fclean : clean
 	make -C libft fclean
-	make -C mlx fclean
-	$(RM) $(NAME) $(NAME_BONUS)
+	$(RM) $(NAME) $(MLX) $(NAME_BONUS)
 
 re : fclean all 

@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/16 10:27:06 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/16 16:28:53 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "libft.h"
 # include <unistd.h>
-# include "mlx.h"
+# include "../mlx/mlx.h"
 # include <math.h>
 # include <stdlib.h>
 
@@ -39,11 +39,15 @@
 
 # define KEYPRESS 2
 # define KEYRELEASE 3
+# define MOTIONNOTIFY 6
 # define DESTROYNOTIFY 17
 
 # define NOEVENTMASK 0L
 # define KEYPRESSMASK 1L
 # define KEYRELEASEMASK 2L
+# define POINTERMOTIONMASK 6L
+
+# define PI 3.14159265359
 
 typedef struct s_math
 {
@@ -110,6 +114,7 @@ typedef struct s_player
 
 typedef struct s_data
 {
+	int			pitch;
 	void		*ml;
 	void		*wi;
 	t_texture	no_t;
@@ -120,7 +125,6 @@ typedef struct s_data
 	t_texture	ce_t;
 	t_texture	*tar;
 	t_player	pl;
-	t_math		math;
 	char		**map;
 	int			*key_bord;
 	t_texture	b_img;
@@ -136,7 +140,7 @@ void	draw_walls(t_data *data, t_math *math);
 void	get_delta_dist(t_math *m);
 int		**init_buffer(void);
 void	move_player(t_player *p, char **map, float x, float y);
-void	rotate_player(t_player *p, float i, float buf);
+void	rotate_player(t_player *p, float i);
 void	check_col(char **map, float *tmp_y, float *tmp_x);
 int		releas_key(int key, t_data *data);
 int		press_key(int key, t_data *data);
@@ -145,5 +149,6 @@ void	move_side_way(t_player *p, char **map, float i);
 void	get_right_one(t_data *data, t_math *m);
 void	check_format(char *map_name, char *format);
 void	draw_up_down(t_data *data, t_math *math);
+int		add_darck(int color, t_math *math);
 
 #endif

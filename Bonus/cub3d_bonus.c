@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:18:17 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/16 10:30:11 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/16 15:14:40 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	init_2(t_data *data)
 
 void	init_1(t_data *data)
 {
+	data->pitch = 0;
 	if (data->pl.spawning == 'E')
 	{
 		data->pl.plane_x = 0.0;
@@ -70,14 +71,28 @@ int	move(t_data *data)
 	if (data->key_bord[MOVE_WRIGHT] && ++i)
 		move_side_way(&data->pl, data->map, -1.0);
 	if (data->key_bord[ROT_LEFT] && ++i)
-		rotate_player(&data->pl, 1.0, 1.0);
+		rotate_player(&data->pl, 1.0);
 	if (data->key_bord[ROT_WRIGHT] && ++i)
-		rotate_player(&data->pl, -1.0, 1.0);
+		rotate_player(&data->pl, -1.0);
 	if (data->key_bord[ESC])
 		ft_clean(data);
 	if (i > 0)
 		strat_ray(data);
 	return (0);
+}
+
+# include <stdio.h>
+
+int mouse(int x, int y, t_data *data)
+{
+	(void)y;
+	if (x < WINDOW_WIDTH / 2)
+		rotate_player(&data->pl, 1.0);
+	else if (x > WINDOW_WIDTH / 2)
+		rotate_player(&data->pl, -1.0);
+	strat_ray(data);
+	mlx_mouse_move(data->wi, WINDOW_WIDTH / 2, 0);
+	return (1);
 }
 
 int	main(int ac, char **av)
@@ -94,6 +109,9 @@ int	main(int ac, char **av)
 	init_1(&data);
 	data.wi = mlx_new_window(data.ml, WINDOW_WIDTH, WINDOW_HIEGHT, "cub3d");
 	strat_ray(&data);
+	mlx_mouse_hide();
+	mlx_mouse_move(data.wi, WINDOW_WIDTH / 2, 0);
+	mlx_hook(data.wi, MOTIONNOTIFY, POINTERMOTIONMASK, mouse, &data);
 	mlx_hook(data.wi, KEYPRESS, KEYPRESSMASK, press_key, &data);
 	mlx_hook(data.wi, KEYRELEASE, KEYRELEASEMASK, releas_key, &data);
 	mlx_hook(data.wi, DESTROYNOTIFY, NOEVENTMASK, ft_clean, &data);

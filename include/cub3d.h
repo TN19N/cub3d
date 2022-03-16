@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/16 10:27:15 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/16 14:32:42 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "libft.h"
 # include <unistd.h>
-# include "mlx.h"
+# include "../mlx/mlx.h"
 # include <math.h>
 # include <stdlib.h>
 
@@ -44,6 +44,8 @@
 # define NOEVENTMASK 0L
 # define KEYPRESSMASK 1L
 # define KEYRELEASEMASK 2L
+
+# define PI 3.14159265359
 
 typedef struct s_math
 {
@@ -121,7 +123,7 @@ void	draw_walls(t_data *data);
 void	get_delta_dist(t_math *m);
 int		**init_buffer(void);
 void	move_player(t_player *p, char **map, float x, float y);
-void	rotate_player(t_player *p, float i, float buf);
+void	rotate_player(t_player *p, float i);
 int		releas_key(int key, t_data *data);
 int		press_key(int key, t_data *data);
 void	put_in_image(t_data *data, int i, int j, int color);

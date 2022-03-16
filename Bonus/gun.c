@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 18:29:51 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/16 20:53:02 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/16 21:25:04 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	fire_animation(t_data *data, t_gun *gun)
 	//ft_strcpy("./fire/a.xpm", c);
 	if (gun->fired == 1)
 	{
-		file_name(c, "textures/png/gun/fire/", (gun->fire_index / 50));
+		file_name(c, "textures/gun/fire/", (gun->fire_index / 50));
 		//cursor(data);
 		//fire_smoke(data);
 		img = mlx_png_file_to_image(data->ml, c, &height, &width);
@@ -67,7 +67,7 @@ void	reload_animation(t_data *data, t_gun *gun)
 	if (gun->gun_reload == 1)
 	{
 		//cursor(data);
-		file_name(c, "textures/png/gun/reload/", (gun->reload_index / 50));
+		file_name(c, "textures/gun/reload/", (gun->reload_index / 50));
 		img = mlx_png_file_to_image(data->ml, c, &height, &width);
 		mlx_put_image_to_window(data->ml, data->wi, img, 0, 0);
 		mlx_destroy_image(data->ml, img);

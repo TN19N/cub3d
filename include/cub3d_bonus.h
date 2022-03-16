@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/16 20:09:51 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/16 21:49:59 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define WINDOW_WIDTH 1000
 
 # define MOVE_SPEED 0.1
-# define ROT_SPEED 0.1
+# define ROT_SPEED 0.05
 
 # define MOVE_FORWARD 13
 # define MOVE_BOCKWARD 1
@@ -60,22 +60,19 @@ typedef struct s_math
 	int		side;
 	int		step_x;
 	int		step_y;
-	float	floor_step_x;
-	float	floor_step_y;
 	int		line_height;
 	float	perp_wall_dist;
 	float	side_dist_x;
 	float	side_dist_y;
 	float	raydir_x;
 	float	raydir_y;
-	float	floor_x;
-	float	floor_y;
-	int		cell_x;
-	int		cell_y;
-	float	raydir_x1;
-	float	raydir_y1;
-	float	raydir_x2;
-	float	raydir_y2;
+	float	dist_wall;
+	float	dist_player;
+	float	current_dist;
+	float	floor_x_wall;
+	float	floor_y_wall;
+	float	current_floor_x;
+	float	current_floor_y;
 	float	delta_dist_x;
 	float	delta_dist_y;
 	int		map_x;
@@ -84,7 +81,6 @@ typedef struct s_math
 	int		draw_start;
 	int		draw_end;
 	int		tex_y;
-	float	row_distance;
 	float	old_side_y;
 	float	old_side_x;
 }			t_math;
@@ -160,7 +156,7 @@ void	put_in_image(t_data *data, int i, int j, int color);
 void	move_side_way(t_player *p, char **map, float i);
 void	get_right_one(t_data *data, t_math *m);
 void	check_format(char *map_name, char *format);
-void	draw_up_down(t_data *data, t_math *math);
+void	draw_up_down(t_data *data, t_math *math, int i);
 int		add_darck(int color, float x);
 int		mouse(int x, int y, t_data *data);
 int		handle_mouse_button(int button, int x, int y, t_gun *gun);

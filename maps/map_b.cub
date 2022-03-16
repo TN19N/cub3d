@@ -1,9 +1,9 @@
-EA ./textures/xpm/redbrick.xpm
-WE ./textures/xpm/redbrick.xpm
-NO ./textures/xpm/redbrick.xpm
-SO ./textures/xpm/redbrick.xpm
-F ./textures/xpm/purplestone.xpm
-C ./textures/xpm/colorstone.xpm
+EA ./textures/walls_cf/redbrick.png
+WE ./textures/walls_cf/redbrick.png
+NO ./textures/walls_cf/redbrick.png
+SO ./textures/walls_cf/redbrick.png
+F ./textures/walls_cf/purplestone.png
+C ./textures/walls_cf/colorstone.png
 
         1111111111111111111111111
         1000000000110000000000001

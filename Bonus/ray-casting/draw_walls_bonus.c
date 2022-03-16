@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 07:18:34 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/16 17:54:34 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/16 21:29:11 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,5 +128,6 @@ void	draw_walls(t_data *data, t_math *math)
 		get_side_dist(data, math);
 		get_hit_pos(data, math);
 		start_drawing(data, math, i);
+		draw_up_down(data, math, i);
 	}
 }

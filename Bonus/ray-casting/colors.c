@@ -6,11 +6,11 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 15:42:58 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/16 17:32:17 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/16 17:55:11 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../../include/cub3d_bonus.h"
+#include "../../include/cub3d_bonus.h"
 
 int	get_r(int trgb)
 {
@@ -29,9 +29,9 @@ int	get_b(int trgb)
 
 int	add_darck(int color, float x)
 {
-	int	r;
-	int	b;
-	int	g;
+	int		r;
+	int		b;
+	int		g;
 	float	per;
 
 	if (x > 10.0)

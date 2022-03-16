@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/16 17:34:18 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/16 17:57:48 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,5 +150,6 @@ void	get_right_one(t_data *data, t_math *m);
 void	check_format(char *map_name, char *format);
 void	draw_up_down(t_data *data, t_math *math);
 int		add_darck(int color, float x);
+int		mouse(int x, int y, t_data *data);
 
 #endif

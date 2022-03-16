@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 07:18:34 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/16 17:34:27 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/16 17:54:34 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	get_line_to_draw(t_data *data, t_math *m)
 	if (m->side == 0)
 		m->wall_x = data->pl.pos_y + m->perp_wall_dist * m->raydir_y;
 	else
-		m->wall_x = data->pl.pos_x + m->perp_wall_dist * m->raydir_x; 
+		m->wall_x = data->pl.pos_x + m->perp_wall_dist * m->raydir_x;
 	m->wall_x -= floor((m->wall_x));
 	get_right_one(data, m);
 	m->tex_x = (int)(m->wall_x * (float)data->tar->width);

@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:18:17 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/16 15:14:40 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/16 17:56:22 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,20 +79,6 @@ int	move(t_data *data)
 	if (i > 0)
 		strat_ray(data);
 	return (0);
-}
-
-# include <stdio.h>
-
-int mouse(int x, int y, t_data *data)
-{
-	(void)y;
-	if (x < WINDOW_WIDTH / 2)
-		rotate_player(&data->pl, 1.0);
-	else if (x > WINDOW_WIDTH / 2)
-		rotate_player(&data->pl, -1.0);
-	strat_ray(data);
-	mlx_mouse_move(data->wi, WINDOW_WIDTH / 2, 0);
-	return (1);
 }
 
 int	main(int ac, char **av)

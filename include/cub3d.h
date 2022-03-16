@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/16 14:32:42 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/16 17:57:32 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@
 # define NOEVENTMASK 0L
 # define KEYPRESSMASK 1L
 # define KEYRELEASEMASK 2L
-
-# define PI 3.14159265359
 
 typedef struct s_math
 {

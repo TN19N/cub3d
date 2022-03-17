@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 21:03:57 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/16 21:11:12 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/17 09:23:59 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,24 @@ int	press_key(int key, t_data *data)
 int	mouse(int x, int y, t_data *data)
 {
 	(void)y;
+	if (data->gun.gun_reload + data->gun.fired)
+		return (0);
 	if (x < WINDOW_WIDTH / 2)
-		data->key_bord[ROT_LEFT] = 1;
+		data->mouse_1 = 1;
 	else if (x > WINDOW_WIDTH / 2)
-		data->key_bord[ROT_WRIGHT] = 1;
-	strat_ray(data);
+		data->mouse_2 = 1;
+	//if (y < WINDOW_HIEGHT / 2 && data->pitch < 100)
+	//	data->pitch++;
+	//else if (y > WINDOW_HIEGHT / 2 && data->pitch > -100)
+	//	data->pitch--;
+	//strat_ray(data);
+	//put_evry_thene(data);
+	data->change = 1;
 	mlx_mouse_move(data->wi, WINDOW_WIDTH / 2, 0);
 	return (1);
 }
+
+# include <stdio.h>
 
 int	handle_mouse_button(int button, int x, int y, t_gun *gun)
 {

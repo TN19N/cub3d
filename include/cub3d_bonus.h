@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/16 21:49:59 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/17 09:42:41 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define WINDOW_WIDTH 1000
 
 # define MOVE_SPEED 0.1
-# define ROT_SPEED 0.05
+# define ROT_SPEED 0.1
 
 # define MOVE_FORWARD 13
 # define MOVE_BOCKWARD 1
@@ -41,6 +41,7 @@
 
 # define KEYPRESS 2
 # define KEYRELEASE 3
+# define BUTTONPRESS 4
 # define MOTIONNOTIFY 6
 # define DESTROYNOTIFY 17
 
@@ -113,6 +114,7 @@ typedef struct s_player
 typedef struct s_gun
 {
 	void	*blank_img;
+	void	*current_img;
 	int		fired;
 	int		fire_index;
 	int		gun_reload;
@@ -121,6 +123,8 @@ typedef struct s_gun
 
 typedef struct s_data
 {
+	int			mouse_1;
+	int			mouse_2;
 	int			pitch;
 	void		*ml;
 	void		*wi;
@@ -136,6 +140,7 @@ typedef struct s_data
 	int			*key_bord;
 	t_texture	b_img;
 	t_gun		gun;
+	int			change;
 }				t_data;
 
 void	init_the_map(char *map_name, t_data *data);
@@ -161,9 +166,10 @@ int		add_darck(int color, float x);
 int		mouse(int x, int y, t_data *data);
 int		handle_mouse_button(int button, int x, int y, t_gun *gun);
 void	reload_gun(t_gun *gun);
-void	gun_inamation(t_data *data, t_gun *gun);
-void	fire_animation(t_data *data, t_gun *gun);
+void	gun_inamation(t_data *data, t_gun *gun, int x);
+void	fire_animation(t_data *data, t_gun *gun, int x);
 void	fire_gun(t_gun *gun);
 void	file_name(char *c, char *path, int filenum);
+void	put_evry_thene(t_data *data);
 
 #endif

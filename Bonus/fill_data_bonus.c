@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 11:36:38 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/16 21:20:14 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/17 12:50:37 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	add_to_map(t_data *data, char *line)
 		ft_free_2d_array(tmp_map);
 }
 
-void	get_xpm_files(char *file_path, t_texture *t, void *ml)
+void	get_png_files(char *file_path, t_texture *t, void *ml)
 {
 	int	tmp;
 

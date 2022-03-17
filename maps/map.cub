@@ -1,7 +1,7 @@
-EA ./textures/xpm/redbrick.xpm
-WE ./textures/xpm/redbrick.xpm
-NO ./textures/xpm/redbrick.xpm
-SO ./textures/xpm/redbrick.xpm
+EA ./textures/walls_cf/redbrick.png
+WE ./textures/walls_cf/redbrick.png
+NO ./textures/walls_cf/redbrick.png
+SO ./textures/walls_cf/redbrick.png
 F 154,154,154
 C 92,92,92
 

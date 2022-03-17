@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 09:05:45 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/16 17:34:47 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/17 16:16:34 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,13 @@ void	move_side_way(t_player *p, char **map, float i)
 	tmp_dir_y = old_dir_x * sin(1.57 * i) + p->dir_y * cos(1.57 * i);
 	tmp_x = p->pos_x + tmp_dir_x * MOVE_SPEED;
 	tmp_y = p->pos_y + tmp_dir_y * MOVE_SPEED;
-	if (map[(int)tmp_y][(int)tmp_x] == '0')
+	if (map[(int)tmp_y][(int)tmp_x] == '0' || \
+	map[(int)tmp_y][(int)tmp_x] == 'D')
 	{
+		if (map[(int)tmp_y][(int)tmp_x] == 'D')
+			open_door(p->data, (int)tmp_y, (int)tmp_x);
+		if (map[(int)p->pos_y][(int)p->pos_x] == 'D')
+			close_door(p->data, (int)p->pos_y, (int)p->pos_x);
 		check_col(map, &tmp_y, &tmp_x);
 		p->pos_x = tmp_x;
 		p->pos_y = tmp_y;
@@ -80,8 +85,13 @@ void	move_player(t_player *p, char **map, float x, float y)
 
 	tmp_x = p->pos_x + p->dir_x * x * MOVE_SPEED;
 	tmp_y = p->pos_y + p->dir_y * y * MOVE_SPEED;
-	if (map[(int)tmp_y][(int)tmp_x] == '0')
+	if (map[(int)tmp_y][(int)tmp_x] == '0' || \
+	map[(int)tmp_y][(int)tmp_x] == 'D')
 	{
+		if (map[(int)tmp_y][(int)tmp_x] == 'D')
+			open_door(p->data, (int)tmp_y, (int)tmp_x);
+		if (map[(int)p->pos_y][(int)p->pos_x] == 'D')
+			close_door(p->data, (int)p->pos_y, (int)p->pos_x);
 		check_col(map, &tmp_y, &tmp_x);
 		p->pos_x = tmp_x;
 		p->pos_y = tmp_y;

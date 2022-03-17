@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 08:20:34 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/15 17:36:15 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/17 14:06:06 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 void	get_right_one(t_data *data, t_math *m)
 {
-	if (m->side == 0 && m->raydir_x > 0)
+	if (data->map[m->map_y][m->map_x] == 'D')
+		return ;
+	else if (m->side == 0 && m->raydir_x > 0)
 		data->tar = &data->no_t;
 	else if (m->side == 0 && m->raydir_x < 0)
 		data->tar = &data->ea_t;

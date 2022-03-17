@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 11:36:38 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/15 08:22:59 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/17 12:52:21 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ void	add_to_map(t_data *data, char *line)
 		ft_free_2d_array(tmp_map);
 }
 
-void	get_xpm_files(char *file_path, t_texture *t, void *ml)
+void	get_png_files(char *file_path, t_texture *t, void *ml)
 {
 	int	tmp;
 
 	if (t->texture)
 		ft_error("you entered different textures for same element");
-	check_format(file_path, ".xpm");
-	t->texture = mlx_xpm_file_to_image(ml, file_path, &t->width, &t->hight);
+	check_format(file_path, ".png");
+	t->texture = mlx_png_file_to_image(ml, file_path, &t->width, &t->hight);
 	if (!t->texture)
 		ft_error("envalid texter !!");
 	t->info = mlx_get_data_addr(t->texture, &t->bits, &t->line_len, &tmp);

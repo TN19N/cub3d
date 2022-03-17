@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/17 10:36:00 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/17 17:30:07 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define WINDOW_WIDTH 1000
 
 # define MOVE_SPEED 0.1
-# define ROT_SPEED 0.1
+# define ROT_SPEED 0.08
 
 # define MOVE_FORWARD 13
 # define MOVE_BOCKWARD 1
@@ -51,6 +51,13 @@
 # define POINTERMOTIONMASK 6L
 
 # define DARCK 4
+
+# define CLOSED 0
+# define OPENED 1
+
+# define PTATH_DOOR "textures/door/door.png"
+
+typedef struct s_data	t_data;
 
 typedef struct s_math
 {
@@ -109,6 +116,7 @@ typedef struct s_player
 	float		plane_x;
 	float		plane_y;
 	char		spawning;
+	t_data		*data;
 }				t_player;
 
 typedef struct s_gun
@@ -120,6 +128,14 @@ typedef struct s_gun
 	int		gun_reload;
 	int		reload_index;
 }	t_gun;
+
+typedef struct s_door
+{
+	t_texture	do_t;
+	int			x;
+	int			y;
+	int			stat;
+}		t_door;
 
 typedef struct s_data
 {
@@ -141,11 +157,13 @@ typedef struct s_data
 	t_texture	b_img;
 	t_gun		gun;
 	int			change;
+	int			number_d;
+	t_door		*d;
 }				t_data;
 
 void	init_the_map(char *map_name, t_data *data);
 void	get_colors(char *color, int **ptr);
-void	get_xpm_files(char *file_path, t_texture *t, void *ml);
+void	get_png_files(char *file_path, t_texture *t, void *ml);
 void	add_to_map(t_data *data, char *line);
 void	check_map(t_data *data);
 void	strat_ray(t_data *data);
@@ -171,5 +189,10 @@ void	fire_gun(t_gun *gun);
 void	file_name(char *c, char *path, int filenum);
 void	put_evry_thene(t_data *data);
 void	init_1(t_data *data);
+void	get_door_info(t_data *data, int i, int j);
+int		if_closed(t_data *data, int y, int x);
+void	open_door(t_data *data, int y, int x);
+void	close_door(t_data *data, int y, int x);
+int		check_door(t_data *data, int y, int x);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 06:59:54 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/16 10:03:42 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/17 17:29:38 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,17 @@ int	check_if_valid(t_data *data, char c, int i, int j)
 {
 	if (c != '1' && c != ' ' && c != '0' \
 	&& c != 'N' && c != 'W' && c != 'E' \
-	&& c != 'S')
+	&& c != 'S' && c != 'D')
 		return (1);
+	if (c == 'D' && check_door(data, i, j))
+		data->number_d++;
 	if (c == 'S' || c == 'W' || c == 'E' || c == 'N')
 	{
 		if (data->pl.spawning != '@')
 			ft_error("you entered more than one player :)");
 		else
 		{
+			data->pl.data = data;
 			data->pl.pos_x = (float)j;
 			data->pl.pos_y = (float)i;
 			check_col(data->map, &data->pl.pos_y, &data->pl.pos_x);
@@ -103,9 +106,12 @@ void	check_if_surrounded(t_data *data)
 		while (data->map[i][++j])
 		{
 			c = data->map[i][j];
-			if (c == '0' || c == 'W' || c == 'N' || c == 'E' || c == 'S')
+			if (c == 'D' || c == '0' || c == 'W' || \
+			c == 'N' || c == 'E' || c == 'S')
 				if (check_y(data, i, j) || check_x(data, i, j))
 					ft_error("the map not surrounded by walls");
+			if (c == 'D')
+				get_door_info(data, i, j);
 		}
 	}
 }
@@ -128,5 +134,11 @@ void	check_map(t_data *data)
 	}
 	if (data->pl.spawning == '@')
 		ft_error("you didnt entre a player ???");
+	if (data->number_d)
+	{
+		data->d = malloc(sizeof(t_door) * data->number_d);
+		if (!data->d)
+			ft_error("malloc faild :{");
+	}
 	check_if_surrounded(data);
 }

@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 08:20:02 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/15 09:12:00 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/17 12:53:31 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	check_format(char *map_name, char *format)
 	{
 		if (!ft_strcmp(format, ".cub"))
 			ft_error("the map should be .cub format");
-		if (!ft_strcmp(format, ".xpm"))
-			ft_error("the texturs should be .xpm format");
+		if (!ft_strcmp(format, ".png"))
+			ft_error("the texturs should be .png format");
 	}
 }
 
@@ -44,13 +44,13 @@ void	get_info_from_lines(char *line, t_data *data)
 	if (ft_count_2d_array(tab) != 2)
 		ft_error("invalid map !!");
 	if (!ft_strcmp(tab[0], "NO"))
-		get_xpm_files(tab[1], &data->no_t, data->ml);
+		get_png_files(tab[1], &data->no_t, data->ml);
 	else if (!ft_strcmp(tab[0], "SO"))
-		get_xpm_files(tab[1], &data->so_t, data->ml);
+		get_png_files(tab[1], &data->so_t, data->ml);
 	else if (!ft_strcmp(tab[0], "WE"))
-		get_xpm_files(tab[1], &data->we_t, data->ml);
+		get_png_files(tab[1], &data->we_t, data->ml);
 	else if (!ft_strcmp(tab[0], "EA"))
-		get_xpm_files(tab[1], &data->ea_t, data->ml);
+		get_png_files(tab[1], &data->ea_t, data->ml);
 	else if (!ft_strcmp(tab[0], "F"))
 		get_colors(tab[1], &data->floor_color);
 	else if (!ft_strcmp(tab[0], "C"))

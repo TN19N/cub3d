@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/16 17:57:32 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/17 12:52:45 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ typedef struct s_data
 
 void	init_the_map(char *map_name, t_data *data);
 void	get_colors(char *color, int **ptr);
-void	get_xpm_files(char *file_path, t_texture *t, void *ml);
+void	get_png_files(char *file_path, t_texture *t, void *ml);
 void	add_to_map(t_data *data, char *line);
 void	check_map(t_data *data);
 void	strat_ray(t_data *data);

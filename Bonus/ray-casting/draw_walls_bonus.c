@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 07:18:34 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/17 07:03:31 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/17 16:32:53 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,7 @@ void	get_line_to_draw(t_data *data, t_math *m)
 
 void	get_hit_pos(t_data *data, t_math *math)
 {
-	int		hit;
-
-	hit = 0;
-	while (hit == 0)
+	while (1337)
 	{
 		if (math->side_dist_x < math->side_dist_y)
 		{
@@ -76,8 +73,11 @@ void	get_hit_pos(t_data *data, t_math *math)
 			math->map_y += math->step_y;
 			math->side = 1;
 		}
+		if (data->map[math->map_y][math->map_x] == 'D')
+			if (if_closed(data, math->map_y, math->map_x))
+				break ;
 		if (data->map[math->map_y][math->map_x] == '1')
-			hit = 1;
+			break ;
 	}
 	if (math->side == 0)
 		math->perp_wall_dist = math->side_dist_x - math->delta_dist_x;

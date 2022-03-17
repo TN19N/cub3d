@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 08:20:02 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/16 21:17:46 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/17 13:11:45 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,17 @@ void	get_info_from_lines(char *line, t_data *data)
 	if (ft_count_2d_array(tab) != 2)
 		ft_error("invalid map !!");
 	if (!ft_strcmp(tab[0], "NO"))
-		get_xpm_files(tab[1], &data->no_t, data->ml);
+		get_png_files(tab[1], &data->no_t, data->ml);
 	else if (!ft_strcmp(tab[0], "SO"))
-		get_xpm_files(tab[1], &data->so_t, data->ml);
+		get_png_files(tab[1], &data->so_t, data->ml);
 	else if (!ft_strcmp(tab[0], "WE"))
-		get_xpm_files(tab[1], &data->we_t, data->ml);
+		get_png_files(tab[1], &data->we_t, data->ml);
 	else if (!ft_strcmp(tab[0], "EA"))
-		get_xpm_files(tab[1], &data->ea_t, data->ml);
+		get_png_files(tab[1], &data->ea_t, data->ml);
 	else if (!ft_strcmp(tab[0], "F"))
-		get_xpm_files(tab[1], &data->fl_t, data->ml);
+		get_png_files(tab[1], &data->fl_t, data->ml);
 	else if (!ft_strcmp(tab[0], "C"))
-		get_xpm_files(tab[1], &data->ce_t, data->ml);
+		get_png_files(tab[1], &data->ce_t, data->ml);
 	else
 		if (check_if_all_fill(data))
 			ft_error("envalid map !!");
@@ -95,6 +95,7 @@ void	init_the_map(char *map_name, t_data *data)
 	data->we_t.texture = NULL;
 	data->fl_t.texture = NULL;
 	data->ce_t.texture = NULL;
+	data->number_d = 0;
 	data->map = NULL;
 	check_format(map_name, ".cub");
 	fd = open(map_name, O_RDONLY);

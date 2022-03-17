@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:18:17 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/17 09:42:14 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/17 10:35:01 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,55 +19,6 @@ int	ft_clean(t_data	*data)
 	exit(EXIT_SUCCESS);
 }
 
-void	init_2(t_data *data)
-{
-	data->gun.fire_index = 50;
-	data->gun.fired = 0;
-	data->gun.reload_index = 50;
-	data->gun.gun_reload = 0;
-	if (data->pl.spawning == 'N')
-	{
-		data->pl.plane_x = 0.0;
-		data->pl.plane_y = -0.66;
-		data->pl.dir_x = 1.0;
-		data->pl.dir_y = 0.0;
-	}
-	else if (data->pl.spawning == 'S')
-	{
-		data->pl.plane_x = -0.66;
-		data->pl.plane_y = 0.0;
-		data->pl.dir_x = 0.0;
-		data->pl.dir_y = -1.0;
-	}
-}
-
-void	init_1(t_data *data)
-{
-	data->mouse_1 = 0;
-	data->mouse_2 = 0;
-	data->pitch = 0;
-	data->gun.current_img = NULL;
-	data->b_img.texture = NULL;
-	data->change = 0;
-	if (data->pl.spawning == 'E')
-	{
-		data->pl.plane_x = 0.0;
-		data->pl.plane_y = 0.66;
-		data->pl.dir_x = -1.0;
-		data->pl.dir_y = 0.0;
-	}
-	if (data->pl.spawning == 'W')
-	{
-		data->pl.plane_x = 0.66;
-		data->pl.plane_y = 0.0;
-		data->pl.dir_x = 0.0;
-		data->pl.dir_y = 1.0;
-	}
-	init_2(data);
-}
-
-# include <stdio.h>
-
 void	put_evry_thene(t_data *data)
 {
 	mlx_put_image_to_window(data->ml, data->wi, data->b_img.texture, 0, 0);
@@ -75,36 +26,43 @@ void	put_evry_thene(t_data *data)
 	data->change = 0;
 }
 
-int	move(t_data *data)
+void	keys(t_data *data)
 {
+	int	v;
 	int	i;
 
 	i = 0;
-	if (data->key_bord[MOVE_FORWARD] && ++i)
+	v = data->gun.fired + data->gun.gun_reload;
+	if (data->key_bord[MOVE_FORWARD] && !v && ++i)
 		move_player(&data->pl, data->map, 1.0, 1.0);
-	if (data->key_bord[MOVE_BOCKWARD]&& ++i)
+	if (data->key_bord[MOVE_BOCKWARD] && !v && ++i)
 		move_player(&data->pl, data->map, -1.0, -1.0);
-	if (data->key_bord[MOVE_LEFT] && ++i)
+	if (data->key_bord[MOVE_LEFT] && !v && ++i)
 		move_side_way(&data->pl, data->map, 1.0);
-	if (data->key_bord[MOVE_WRIGHT] && ++i)
+	if (data->key_bord[MOVE_WRIGHT] && !v && ++i)
 		move_side_way(&data->pl, data->map, -1.0);
-	if ((data->key_bord[ROT_LEFT] || data->mouse_1) && ++i)
+	if ((data->key_bord[ROT_LEFT] || data->mouse_1) && !v && ++i)
 	{
 		rotate_player(&data->pl, 1.0);
 		data->mouse_1 = 0;
 	}
-	if ((data->key_bord[ROT_WRIGHT] || data->mouse_2) && ++i)
+	if ((data->key_bord[ROT_WRIGHT] || data->mouse_2) && !v && ++i)
 	{
 		rotate_player(&data->pl, -1.0);
 		data->mouse_2 = 0;
 	}
-	if (data->key_bord[RELOAD_GUN])
-		reload_gun(&data->gun);
-	if (data->key_bord[ESC])
-		ft_clean(data);
 	if (i > 0)
 		strat_ray(data);
-	gun_inamation(data, &data->gun, 1);
+}
+
+int	animation(t_data *data)
+{
+	if (data->key_bord[ESC])
+		ft_clean(data);
+	if (data->key_bord[RELOAD_GUN])
+		reload_gun(&data->gun);
+	keys(data);
+	gun_inamation(data, &data->gun);
 	if (data->change)
 		put_evry_thene(data);
 	return (0);
@@ -131,7 +89,7 @@ int	main(int ac, char **av)
 	mlx_hook(data.wi, KEYPRESS, KEYPRESSMASK, press_key, &data);
 	mlx_hook(data.wi, KEYRELEASE, KEYRELEASEMASK, releas_key, &data);
 	mlx_hook(data.wi, DESTROYNOTIFY, NOEVENTMASK, ft_clean, &data);
-	mlx_loop_hook(data.ml, move, &data);
+	mlx_loop_hook(data.ml, animation, &data);
 	mlx_loop(data.ml);
 	return (EXIT_SUCCESS);
 }

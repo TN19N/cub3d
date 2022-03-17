@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/17 09:42:41 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/17 10:36:00 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,10 +166,10 @@ int		add_darck(int color, float x);
 int		mouse(int x, int y, t_data *data);
 int		handle_mouse_button(int button, int x, int y, t_gun *gun);
 void	reload_gun(t_gun *gun);
-void	gun_inamation(t_data *data, t_gun *gun, int x);
-void	fire_animation(t_data *data, t_gun *gun, int x);
+void	gun_inamation(t_data *data, t_gun *gun);
 void	fire_gun(t_gun *gun);
 void	file_name(char *c, char *path, int filenum);
 void	put_evry_thene(t_data *data);
+void	init_1(t_data *data);
 
 #endif

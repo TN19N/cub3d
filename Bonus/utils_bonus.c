@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 21:03:57 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/17 09:23:59 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/17 10:29:24 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,9 @@ int	mouse(int x, int y, t_data *data)
 		data->mouse_1 = 1;
 	else if (x > WINDOW_WIDTH / 2)
 		data->mouse_2 = 1;
-	//if (y < WINDOW_HIEGHT / 2 && data->pitch < 100)
-	//	data->pitch++;
-	//else if (y > WINDOW_HIEGHT / 2 && data->pitch > -100)
-	//	data->pitch--;
-	//strat_ray(data);
-	//put_evry_thene(data);
-	data->change = 1;
 	mlx_mouse_move(data->wi, WINDOW_WIDTH / 2, 0);
 	return (1);
 }
-
-# include <stdio.h>
 
 int	handle_mouse_button(int button, int x, int y, t_gun *gun)
 {
@@ -64,11 +55,11 @@ void	file_name(char *c, char *path, int filenum)
 	i = 0;
 	extention = ".png";
 	it = ft_itoa(filenum);
-	while(*path)
+	while (*path)
 		*(c++) = *(path++);
-	while(it[i])
+	while (it[i])
 		*(c++) = it[i++];
-	while(*extention)
+	while (*extention)
 		*(c++) = *(extention++);
 	free(it);
 	*c = 0;

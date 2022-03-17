@@ -6,12 +6,12 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 10:18:20 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/17 09:54:14 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/17 10:28:54 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d_bonus.h"
-#include <stdio.h>
+
 void	strat_ray(t_data *data)
 {
 	int			tmp;
@@ -28,7 +28,6 @@ void	strat_ray(t_data *data)
 	img_t->info = mlx_get_data_addr(img_t->texture, &img_t->bits, \
 	&img_t->line_len, &tmp);
 	draw_walls(data, math);
-	reload_gun(&data->gun);
 	data->change = 1;
 	free(math);
 }

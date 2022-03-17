@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 09:05:45 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/16 17:58:07 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/17 10:38:12 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	move_side_way(t_player *p, char **map, float i)
 
 	old_dir_x = p->dir_x;
 	tmp_dir_x = p->dir_x * cos(1.57 * i) - p->dir_y * sin(1.57 * i);
-	tmp_dir_y = old_dir_x * sin(1.57  * i) + p->dir_y * cos(1.57 * i);
+	tmp_dir_y = old_dir_x * sin(1.57 * i) + p->dir_y * cos(1.57 * i);
 	tmp_x = p->pos_x + tmp_dir_x * MOVE_SPEED;
 	tmp_y = p->pos_y + tmp_dir_y * MOVE_SPEED;
 	if (map[(int)tmp_y][(int)tmp_x] == '0')

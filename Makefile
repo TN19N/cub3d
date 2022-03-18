@@ -6,7 +6,7 @@
 #    By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/11 07:17:57 by mannouao          #+#    #+#              #
-#    Updated: 2022/03/17 17:30:24 by mannouao         ###   ########.fr        #
+#    Updated: 2022/03/18 14:08:19 by mannouao         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRCS_BONUS =  $(SRCS_PATH_BONUS)cub3d_bonus.c \
 		$(SRCS_PATH_BONUS)ray-casting/colors.c \
 		$(SRCS_PATH_BONUS)move_player_bonus.c \
 		$(SRCS_PATH_BONUS)doors.c \
+		$(SRCS_PATH_BONUS)sounds.c \
 		$(SRCS_PATH_BONUS)doors_2.c \
 		$(SRCS_PATH_BONUS)init.c \
 		$(SRCS_PATH_BONUS)gun.c \

@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 07:18:34 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/17 16:32:53 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/18 09:21:41 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ void	start_drawing(t_data *data, t_math *math, int x)
 void	get_line_to_draw(t_data *data, t_math *m)
 {
 	m->line_height = (int)(WINDOW_HIEGHT / m->perp_wall_dist);
-	m->draw_start = (-m->line_height / 2) + (WINDOW_HIEGHT / 2) + data->pitch;
+	m->draw_start = (-m->line_height / 2) + (WINDOW_HIEGHT / 2);
 	if (m->draw_start < 0)
 		m->draw_start = 0;
-	m->draw_end = (m->line_height / 2) + (WINDOW_HIEGHT / 2) + data->pitch;
+	m->draw_end = (m->line_height / 2) + (WINDOW_HIEGHT / 2);
 	if (m->draw_end >= WINDOW_HIEGHT)
 		m->draw_end = WINDOW_HIEGHT - 1;
 	if (m->side == 0)
@@ -53,7 +53,7 @@ void	get_line_to_draw(t_data *data, t_math *m)
 	if (m->side == 1 && m->raydir_y < 0)
 		m->tex_x = data->tar->width - m->tex_x - 1;
 	m->step = 1.0 * data->tar->hight / m->line_height;
-	m->tex_pos = ((m->draw_start - data->pitch - (WINDOW_HIEGHT / \
+	m->tex_pos = ((m->draw_start - (WINDOW_HIEGHT / \
 	2)) + (m->line_height / 2)) * m->step;
 }
 

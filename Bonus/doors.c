@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 13:29:14 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/17 16:52:38 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/18 14:19:44 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	open_door(t_data *data, int y, int x)
 	int	i;
 
 	i = wich_door(data, y, x);
+	if (data->d[i].stat == CLOSED)
+		sound(1);
 	data->d[i].stat = OPENED;
 }
 
@@ -41,6 +43,8 @@ void	close_door(t_data *data, int y, int x)
 	int	i;
 
 	i = wich_door(data, y, x);
+	if (data->d[i].stat == OPENED)
+		sound(2);
 	data->d[i].stat = CLOSED;
 }
 

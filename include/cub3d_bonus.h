@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/17 17:30:07 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/18 14:22:40 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@
 # define KEYRELEASEMASK 2L
 # define POINTERMOTIONMASK 6L
 
-# define DARCK 4
+# define DARCK 7
 
 # define CLOSED 0
 # define OPENED 1
@@ -141,7 +141,6 @@ typedef struct s_data
 {
 	int			mouse_1;
 	int			mouse_2;
-	int			pitch;
 	void		*ml;
 	void		*wi;
 	t_texture	no_t;
@@ -194,5 +193,6 @@ int		if_closed(t_data *data, int y, int x);
 void	open_door(t_data *data, int y, int x);
 void	close_door(t_data *data, int y, int x);
 int		check_door(t_data *data, int y, int x);
+void	sound(int i);
 
 #endif

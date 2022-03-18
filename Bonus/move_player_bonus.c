@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 09:05:45 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/17 16:16:34 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/18 14:18:19 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	move_side_way(t_player *p, char **map, float i)
 	{
 		if (map[(int)tmp_y][(int)tmp_x] == 'D')
 			open_door(p->data, (int)tmp_y, (int)tmp_x);
-		if (map[(int)p->pos_y][(int)p->pos_x] == 'D')
+		else if (map[(int)p->pos_y][(int)p->pos_x] == 'D')
 			close_door(p->data, (int)p->pos_y, (int)p->pos_x);
 		check_col(map, &tmp_y, &tmp_x);
 		p->pos_x = tmp_x;
@@ -90,7 +90,7 @@ void	move_player(t_player *p, char **map, float x, float y)
 	{
 		if (map[(int)tmp_y][(int)tmp_x] == 'D')
 			open_door(p->data, (int)tmp_y, (int)tmp_x);
-		if (map[(int)p->pos_y][(int)p->pos_x] == 'D')
+		else if (map[(int)p->pos_y][(int)p->pos_x] == 'D')
 			close_door(p->data, (int)p->pos_y, (int)p->pos_x);
 		check_col(map, &tmp_y, &tmp_x);
 		p->pos_x = tmp_x;

@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 07:18:34 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/18 09:21:41 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/19 09:28:49 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,7 @@ void	start_drawing(t_data *data, t_math *math, int x)
 		math->tex_pos += math->step;
 		color = (int *)data->tar->info + (data->tar->hight * math->tex_y \
 		+ math->tex_x);
-		if (math->side == 1)
-			put_in_image(data, i, x, add_darck(*color, math->perp_wall_dist));
-		else
-			put_in_image(data, i, x, add_darck(*color, math->perp_wall_dist));
+		put_in_image(data, i, x, add_darck(*color, math->perp_wall_dist));
 		i++;
 	}
 }
@@ -115,7 +112,7 @@ void	get_side_dist(t_data *data, t_math *m)
 
 void	draw_walls(t_data *data, t_math *math)
 {
-	int	i;
+	int		i;
 
 	i = -1;
 	while (++i < WINDOW_WIDTH)
@@ -129,5 +126,6 @@ void	draw_walls(t_data *data, t_math *math)
 		get_hit_pos(data, math);
 		start_drawing(data, math, i);
 		draw_up_down(data, math, i);
+		data->z_buffer[i] = math->perp_wall_dist;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 10:34:22 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/18 09:22:01 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/19 14:39:57 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,11 @@ void	init_gun_and_mouse(t_data *data)
 {
 	data->mouse_1 = 0;
 	data->mouse_2 = 0;
-	data->gun.current_img = NULL;
 	data->b_img.texture = NULL;
 	data->change = 0;
-	data->gun.fire_index = 50;
+	data->gun.frame = 0;
+	data->gun.bullets = 5;
 	data->gun.fired = 0;
-	data->gun.reload_index = 50;
 	data->gun.gun_reload = 0;
 }
 
@@ -46,6 +45,7 @@ void	init_2(t_data *data)
 void	init_1(t_data *data)
 {
 	init_gun_and_mouse(data);
+	load_frames(data);
 	if (data->pl.spawning == 'E')
 	{
 		data->pl.plane_x = 0.0;
@@ -61,4 +61,20 @@ void	init_1(t_data *data)
 		data->pl.dir_y = 1.0;
 	}
 	init_2(data);
+}
+
+void	init_doors_and_enemys(t_data *data)
+{
+	if (data->number_d)
+	{
+		data->d = malloc(sizeof(t_door) * data->number_d);
+		if (!data->d)
+			ft_error("malloc faild :{");
+	}
+	if (data->number_e)
+	{
+		data->enemys = malloc(sizeof(t_enemy) * data->number_e);
+		if (!data->enemys)
+			ft_error("malloc faild :{");
+	}
 }

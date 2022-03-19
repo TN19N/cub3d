@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 13:29:14 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/18 14:19:44 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/18 15:52:36 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	get_door_info(t_data *data, int y, int x)
 	d = &data->d[i++];
 	t = &d->do_t;
 	t->texture = \
-	mlx_png_file_to_image(data->ml, PTATH_DOOR, &t->width, &t->hight);
+	mlx_png_file_to_image(data->ml, PATH_DOOR, &t->width, &t->hight);
 	if (!t->texture)
 		ft_error("can't open door img :^)");
 	t->info = mlx_get_data_addr(t->texture, &t->bits, &t->line_len, &tmp);

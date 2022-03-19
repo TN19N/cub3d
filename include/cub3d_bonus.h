@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/18 14:22:40 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/19 15:23:43 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,28 @@
 # define CLOSED 0
 # define OPENED 1
 
-# define PTATH_DOOR "textures/door/door.png"
+# define PATH_DOOR "textures/door/door.png"
+# define PATH_ENEMY "textures/sprits/pillar.png"
 
 typedef struct s_data	t_data;
+
+typedef struct s_math_2
+{
+	float	sprite_x;
+	float	sprite_y;
+	float	inv_det;
+	float	transform_x;
+	float	transform_y;
+	int		sprite_screen_x;
+	int		sprite_height;
+	int		draw_start_y;
+	int		draw_end_y;
+	int		sprite_width;
+	int		draw_start_x;
+	int		draw_end_x;
+	int		tex_x;
+	int		tex_y;
+}			t_math_2;
 
 typedef struct s_math
 {
@@ -122,12 +141,24 @@ typedef struct s_player
 typedef struct s_gun
 {
 	void	*blank_img;
-	void	*current_img;
 	int		fired;
-	int		fire_index;
+	void	**fire_frames;
+	void	**reload_frames;
+	void	*idle_frame;
+	void	*cursor;
+	void	**bullets_frames;
+	int		bullets;
+	int		frame;
 	int		gun_reload;
-	int		reload_index;
 }	t_gun;
+
+typedef struct s_enemy
+{
+	t_texture	en_t;
+	float		x;
+	float		y;
+	float		dest;
+}				t_enemy;
 
 typedef struct s_door
 {
@@ -158,6 +189,10 @@ typedef struct s_data
 	int			change;
 	int			number_d;
 	t_door		*d;
+	int			number_e;
+	t_enemy		*enemys;
+	int			is_enemy[2];
+	float		*z_buffer;
 }				t_data;
 
 void	init_the_map(char *map_name, t_data *data);
@@ -165,7 +200,7 @@ void	get_colors(char *color, int **ptr);
 void	get_png_files(char *file_path, t_texture *t, void *ml);
 void	add_to_map(t_data *data, char *line);
 void	check_map(t_data *data);
-void	strat_ray(t_data *data);
+void	strat_ray(t_data *data, int count);
 void	draw_walls(t_data *data, t_math *math);
 void	get_delta_dist(t_math *m);
 int		**init_buffer(void);
@@ -183,7 +218,7 @@ int		add_darck(int color, float x);
 int		mouse(int x, int y, t_data *data);
 int		handle_mouse_button(int button, int x, int y, t_gun *gun);
 void	reload_gun(t_gun *gun);
-void	gun_inamation(t_data *data, t_gun *gun);
+void	gun_inamation(t_gun *gun, t_data *data, int count, int i);
 void	fire_gun(t_gun *gun);
 void	file_name(char *c, char *path, int filenum);
 void	put_evry_thene(t_data *data);
@@ -194,5 +229,13 @@ void	open_door(t_data *data, int y, int x);
 void	close_door(t_data *data, int y, int x);
 int		check_door(t_data *data, int y, int x);
 void	sound(int i);
+void	init_doors_and_enemys(t_data *data);
+void	save_enemy_info(t_data *data, t_math *m, int y, int x);
+void	init_enemy(t_data *data, t_math *m);
+void	draw_enemy(t_data *data, int i);
+void	get_enemy_info(t_data *data, int y, int x);
+void	con_draw(t_data *data, t_math_2 *m, int i, t_enemy *e);
+void	gun_frames(t_data *data, int count);
+void	load_frames(t_data *data);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 10:18:20 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/18 09:04:11 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/19 14:18:44 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d_bonus.h"
 
-void	strat_ray(t_data *data)
+void	strat_ray(t_data *data, int count)
 {
 	int			tmp;
 	t_math		*math;
@@ -24,10 +24,16 @@ void	strat_ray(t_data *data)
 	math = malloc(sizeof(t_math));
 	if (!math)
 		ft_error("malloc faild!");
+	data->z_buffer = malloc(sizeof(float) * WINDOW_WIDTH);
+	if (!data->z_buffer)
+		ft_error("malloc faild!");
 	img_t->texture = mlx_new_image(data->ml, WINDOW_WIDTH, WINDOW_HIEGHT);
 	img_t->info = mlx_get_data_addr(img_t->texture, &img_t->bits, \
 	&img_t->line_len, &tmp);
 	draw_walls(data, math);
+	draw_enemy(data, -1);
+	gun_frames(data, count);
 	data->change = 1;
 	free(math);
+	free(data->z_buffer);
 }

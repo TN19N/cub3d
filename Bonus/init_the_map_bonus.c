@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 08:20:02 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/17 13:11:45 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/18 15:45:56 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ void	init_the_map(char *map_name, t_data *data)
 	data->fl_t.texture = NULL;
 	data->ce_t.texture = NULL;
 	data->number_d = 0;
+	data->number_e = 0;
 	data->map = NULL;
 	check_format(map_name, ".cub");
 	fd = open(map_name, O_RDONLY);

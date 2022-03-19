@@ -6,11 +6,23 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 08:20:34 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/17 14:06:06 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/19 15:49:52 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d_bonus.h"
+
+void	gun_frames(t_data *data, int count)
+{
+	if ((data->gun.frame == 55 || data->gun.frame == 67 \
+	|| data->gun.frame == 79 || \
+	data->gun.frame == 92 || data->gun.frame == 101) \
+	&& data->gun.bullets < 5)
+		data->gun.bullets++;
+	if ((data->gun.fired || data->gun.gun_reload) \
+	&& count % 100 == 0 && data->gun.frame != 0)
+		data->gun.frame++;
+}
 
 void	get_right_one(t_data *data, t_math *m)
 {
@@ -46,4 +58,23 @@ void	put_in_image(t_data *data, int i, int j, int color)
 	img_t = &data->b_img;
 	tmp = img_t->info + (img_t->line_len * i + j * (img_t->bits / 8));
 	*(unsigned int *)tmp = color;
+}
+
+void	con_draw(t_data *data, t_math_2 *m, int i, t_enemy *e)
+{
+	t_texture	*t;
+	int			j;
+	int			d;
+	int			*color;
+
+	j = m->draw_start_y - 1;
+	t = &e->en_t;
+	while (++j < m->draw_end_y)
+	{	
+		d = j * 256 - WINDOW_HIEGHT * 128 + m->sprite_height * 128;
+		m->tex_y = ((d * t->hight) / m->sprite_height) / 256;
+		color = (int *)t->info + (t->width * m->tex_y + m->tex_x);
+		if (*color)
+			put_in_image(data, j, i, add_darck(*color, sqrt(e->dest)));
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 21:03:57 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/18 14:23:34 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/19 14:51:38 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ int	press_key(int key, t_data *data)
 int	mouse(int x, int y, t_data *data)
 {
 	(void)y;
-	if (data->gun.gun_reload + data->gun.fired)
-		return (0);
 	if (x < WINDOW_WIDTH / 2)
 		data->mouse_1 = 1;
 	else if (x > WINDOW_WIDTH / 2)

@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:18:17 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/20 08:34:58 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/20 16:38:56 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@ void	put_evry_thene(t_data *data)
 	if (data->gun.bullets)
 		mlx_put_image_to_window(data->ml, data->wi, \
 		data->gun.bullets_frames[data->gun.bullets - 1], -80, 500);
+	if (data->mini_map.part_map.texture)
+		mlx_destroy_image(data->ml,data->mini_map.part_map.texture);
+	draw_part_of_map(data);
+	mlx_put_image_to_window(data->ml,data->wi, data->mini_map.part_map.texture, 0, 0);
+	mlx_put_image_to_window(data->ml,data->wi, data->mini_map.icon, data->mini_map.player.x, data->mini_map.player.y);
 	data->change = 0;
 }
 

@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 10:34:22 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/20 08:37:41 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/20 16:38:09 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,17 @@ void	init_2(t_data *data)
 
 void	init_1(t_data *data)
 {
+	int tmp;
+
 	init_gun_and_mouse(data);
 	load_frames(data);
+	data->mini_map.map_content = data->map;
+	printf("%d %d\n", data->mini_map.map_width, data->mini_map.map_height);
+	data->mini_map.full_map.texture = mlx_new_image(data->ml, data->mini_map.map_width, data->mini_map.map_height);
+	data->mini_map.full_map.info = mlx_get_data_addr(data->mini_map.full_map.texture,&data->mini_map.full_map.bits,&data->mini_map.full_map.line_len,&data->mini_map.full_map.endian);
+	data->mini_map.part_map.texture = NULL;
+	data->mini_map.icon = mlx_png_file_to_image(data->ml,"./textures/loading/circle.png",&tmp, &tmp);
+	draw_map(&data->mini_map);
 	if (data->pl.spawning == 'E')
 	{
 		data->pl.plane_x = 0.0;

@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 06:59:54 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/18 15:50:35 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/20 16:38:00 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ void	check_map(t_data *data)
 
 	i = -1;
 	data->pl.spawning = '@';
+	data->mini_map.map_width = 0;
 	while (data->map[++i])
 	{
 		j = -1;
@@ -134,8 +135,11 @@ void	check_map(t_data *data)
 		{
 			if (check_if_valid(data, data->map[i][j], i, j))
 				ft_error("invalid element in the map");
-		}	
+		}
+		if (j > data->mini_map.map_width)
+			data->mini_map.map_width = j * 41;
 	}
+	data->mini_map.map_height = i * 41;
 	if (data->pl.spawning == '@')
 		ft_error("you didnt entre a player ???");
 	init_doors_and_enemys(data);

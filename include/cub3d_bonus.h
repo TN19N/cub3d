@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/20 08:35:36 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/20 16:15:54 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,44 @@
 # define OPENED 1
 
 # define PATH_DOOR "textures/door/door.png"
-# define PATH_ENEMY "textures/sprits/pillar.png"
+# define PATH_ENEMY "textures/sprits/barrel.png"
 
 typedef struct s_data	t_data;
+
+typedef struct s_texture
+{
+	void	*texture;
+	int		bits;
+	int		endian;
+	int		hight;
+	int		line_len;
+	int		width;
+	char	*info;
+}			t_texture;
+
+typedef struct s_axis
+{
+	int	x;
+	int	y;
+}	t_axis;
+
+
+
+# include <stdio.h>
+
+
+
+typedef struct s_map
+{
+	char		**map_content;
+	int 		map_width;
+	t_texture	full_map;
+	t_texture	part_map;
+	t_axis		player;
+	void		*icon;
+	int			endian;
+	int			map_height;
+}				t_map;
 
 typedef struct s_math_2
 {
@@ -112,16 +147,6 @@ typedef struct s_math
 	float	old_side_y;
 	float	old_side_x;
 }			t_math;
-
-typedef struct s_texture
-{
-	void	*texture;
-	int		bits;
-	int		hight;
-	int		line_len;
-	int		width;
-	char	*info;
-}			t_texture;
 
 typedef struct s_player
 {
@@ -184,6 +209,7 @@ typedef struct s_data
 	t_texture	*tar;
 	t_player	pl;
 	char		**map;
+	t_map		mini_map;
 	int			*key_bord;
 	t_texture	b_img;
 	t_gun		gun;
@@ -241,5 +267,7 @@ void	gun_frames(t_data *data, int count);
 void	load_frames(t_data *data);
 void	more_keys(t_data *data);
 int		ft_clean(t_data	*data);
+void	draw_map(t_map *map);
+void	draw_part_of_map(t_data *data);
 
 #endif

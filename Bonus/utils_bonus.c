@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 21:03:57 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/19 14:51:38 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/20 08:33:42 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	press_key(int key, t_data *data)
 int	mouse(int x, int y, t_data *data)
 {
 	(void)y;
+	if (!data->mouse_on)
+		return (0);
 	if (x < WINDOW_WIDTH / 2)
 		data->mouse_1 = 1;
 	else if (x > WINDOW_WIDTH / 2)
@@ -35,12 +37,18 @@ int	mouse(int x, int y, t_data *data)
 	return (1);
 }
 
-int	handle_mouse_button(int button, int x, int y, t_gun *gun)
+int	handle_mouse_button(int button, int x, int y, t_data *data)
 {
 	(void)x;
 	(void)y;
-	if (button == 1 && !gun->gun_reload)
-		fire_gun(gun);
+	if (!data->mouse_on)
+	{
+		data->mouse_on = 1;
+		mlx_mouse_hide();
+		mlx_mouse_move(data->wi, WINDOW_WIDTH / 2, 0);
+	}
+	if (button == 1 && !data->gun.gun_reload)
+		fire_gun(&data->gun);
 	return (0);
 }
 

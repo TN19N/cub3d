@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:18:17 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/19 15:23:30 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/20 08:34:58 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	ft_clean(t_data	*data)
 {
 	ft_free_2d_array(data->map);
 	free(data->key_bord);
+	ft_putendl_fd("thanks for trying our game :)", 1);
 	exit(EXIT_SUCCESS);
 }
 
@@ -70,8 +71,7 @@ int	animation(t_data *data)
 	static int	count;
 
 	i = 0;
-	if (data->key_bord[ESC])
-		ft_clean(data);
+	more_keys(data);
 	if (count % 100 == 0)
 	{
 		if (data->key_bord[RELOAD_GUN])
@@ -98,6 +98,7 @@ int	main(int ac, char **av)
 	data.key_bord = ft_calloc(500, sizeof(int));
 	if (!data.key_bord)
 		ft_error("malloc fail ;(");
+	ft_putendl_fd("loading pleas wait ....", 1);
 	data.ml = mlx_init();
 	init_the_map(av[1], &data);
 	init_1(&data);
@@ -105,12 +106,13 @@ int	main(int ac, char **av)
 	strat_ray(&data, 0);
 	mlx_mouse_hide();
 	mlx_mouse_move(data.wi, WINDOW_WIDTH / 2, 0);
-	mlx_hook(data.wi, BUTTONPRESS, NOEVENTMASK, handle_mouse_button, &data.gun);
+	mlx_hook(data.wi, BUTTONPRESS, NOEVENTMASK, handle_mouse_button, &data);
 	mlx_hook(data.wi, MOTIONNOTIFY, POINTERMOTIONMASK, mouse, &data);
 	mlx_hook(data.wi, KEYPRESS, KEYPRESSMASK, press_key, &data);
 	mlx_hook(data.wi, KEYRELEASE, KEYRELEASEMASK, releas_key, &data);
 	mlx_hook(data.wi, DESTROYNOTIFY, NOEVENTMASK, ft_clean, &data);
 	mlx_loop_hook(data.ml, animation, &data);
+	ft_putendl_fd("you can play now ;)", 1);
 	mlx_loop(data.ml);
 	return (EXIT_SUCCESS);
 }

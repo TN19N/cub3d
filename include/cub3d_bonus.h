@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/19 15:23:43 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/20 08:35:36 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define WINDOW_WIDTH 1000
 
 # define MOVE_SPEED 0.1
-# define ROT_SPEED 0.08
+# define ROT_SPEED 0.05
 
 # define MOVE_FORWARD 13
 # define MOVE_BOCKWARD 1
@@ -35,6 +35,7 @@
 
 # define RELOAD_GUN 15
 
+# define MOUSE_ON_OFF 50
 # define ESC 53
 
 # define COLLISION 0.2
@@ -193,6 +194,7 @@ typedef struct s_data
 	t_enemy		*enemys;
 	int			is_enemy[2];
 	float		*z_buffer;
+	int			mouse_on;
 }				t_data;
 
 void	init_the_map(char *map_name, t_data *data);
@@ -216,7 +218,7 @@ void	check_format(char *map_name, char *format);
 void	draw_up_down(t_data *data, t_math *math, int i);
 int		add_darck(int color, float x);
 int		mouse(int x, int y, t_data *data);
-int		handle_mouse_button(int button, int x, int y, t_gun *gun);
+int		handle_mouse_button(int button, int x, int y, t_data *data);
 void	reload_gun(t_gun *gun);
 void	gun_inamation(t_gun *gun, t_data *data, int count, int i);
 void	fire_gun(t_gun *gun);
@@ -237,5 +239,7 @@ void	get_enemy_info(t_data *data, int y, int x);
 void	con_draw(t_data *data, t_math_2 *m, int i, t_enemy *e);
 void	gun_frames(t_data *data, int count);
 void	load_frames(t_data *data);
+void	more_keys(t_data *data);
+int		ft_clean(t_data	*data);
 
 #endif

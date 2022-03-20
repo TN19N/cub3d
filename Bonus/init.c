@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 10:34:22 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/19 14:39:57 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/20 08:37:41 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	init_gun_and_mouse(t_data *data)
 {
+	data->mouse_on = 1;
 	data->mouse_1 = 0;
 	data->mouse_2 = 0;
 	data->b_img.texture = NULL;
@@ -76,5 +77,16 @@ void	init_doors_and_enemys(t_data *data)
 		data->enemys = malloc(sizeof(t_enemy) * data->number_e);
 		if (!data->enemys)
 			ft_error("malloc faild :{");
+	}
+}
+
+void	more_keys(t_data *data)
+{
+	if (data->key_bord[ESC])
+		ft_clean(data);
+	if (data->key_bord[MOUSE_ON_OFF])
+	{
+		mlx_mouse_show();
+		data->mouse_on = 0;
 	}
 }

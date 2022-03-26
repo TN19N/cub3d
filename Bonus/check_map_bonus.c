@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 06:59:54 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/26 15:28:28 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/26 20:15:46 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,8 @@ int	check_if_valid(t_data *data, char c, int i, int j)
 		else
 		{
 			data->pl.data = data;
-			data->pl.pos_x = (float)j;
-			data->pl.pos_y = (float)i;
-			check_col(data->map, &data->pl.pos_y, &data->pl.pos_x, COLLISION);
+			data->pl.pos_x = (float)j + 0.5;
+			data->pl.pos_y = (float)i + 0.5;
 			data->pl.spawning = data->map[i][j];
 			data->map[i][j] = '0';
 		}

@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/26 15:24:09 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/26 16:47:59 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -279,5 +279,6 @@ void	more_keys(t_data *data);
 int		ft_clean(t_data	*data);
 void	draw_map(t_map *map, t_data *data);
 void	draw_part_of_map(t_data *data);
+int		check_if_door(t_data *data, int i, float d_x, float d_y);
 
 #endif

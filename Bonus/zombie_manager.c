@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   zombie_manager.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hait-moh <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 09:46:38 by hait-moh          #+#    #+#             */
-/*   Updated: 2022/03/23 09:46:40 by hait-moh         ###   ########.fr       */
+/*   Updated: 2022/03/26 16:47:12 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../include/cub3d_bonus.h"
 
 int	hit_enemy(t_data *data, float x, float y, int i)
@@ -20,6 +21,9 @@ int	hit_enemy(t_data *data, float x, float y, int i)
 	enemy_y = data->enemys[i].y;
 	while (1)
 	{
+		if (data->map[(int)y][(int)x] == 'D')
+			if (if_closed(data, (int)y, (int)x))
+				return (0);
 		if (pixel_color(&data->mini_map.full_map, (int)(x * 21), \
 			(int)(y * 21)) == 0xFFFFFF)
 			return (0);
@@ -48,6 +52,8 @@ void	check_for_path(t_data *data, int i)
 		length = fabsf(dy);
 	deltax = dx / length;
 	deltay = dy / length;
+	if (check_if_door(data, i, deltax, deltay))
+		return ;
 	data->enemys[i].x += deltax / 6;
 	data->enemys[i].y += deltay / 6;
 	check_col(data->map, &data->enemys[i].y, &data->enemys[i].x, 0.28);

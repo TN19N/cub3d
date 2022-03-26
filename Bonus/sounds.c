@@ -6,10 +6,26 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 14:04:33 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/20 11:23:55 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/26 17:38:16 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../include/cub3d_bonus.h"
+
+int	check_if_door(t_data *data, int i, float d_x, float d_y)
+{
+	t_enemy	*e;
+	int		tmp_y;
+	int		tmp_x;
+
+	e = &data->enemys[i];
+	tmp_y = e->y + d_y / 6;
+	tmp_x = e->x + d_x / 6;
+	if (data->map[tmp_y][tmp_x] == 'D')
+		return (1);
+	else
+		return (0);
+}
 
 void	sound(int i)
 {

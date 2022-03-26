@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:42:48 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/19 11:09:44 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/26 15:31:58 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	get_enemy_info(t_data *data, int y, int x)
 	t_enemy		*e;
 	static int	i;
 
+	data->map[y][x] = '0';
 	e = &data->enemys[i++];
 	e->x = (float)x + 0.5;
 	e->y = (float)y + 0.5;

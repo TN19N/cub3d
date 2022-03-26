@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 06:59:54 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/20 16:38:00 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/26 15:28:28 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,7 @@ void	check_if_surrounded(t_data *data)
 		while (data->map[i][++j])
 		{
 			c = data->map[i][j];
-			if (c == 'D' || c == '0' || c == 'W' || \
-			c == 'N' || c == 'E' || c == 'S' || c == 'M')
+			if (c == 'D' || c == '0' || c == 'M')
 				if (check_y(data, i, j) || check_x(data, i, j))
 					ft_error("the map not surrounded by walls");
 			if (c == 'D')

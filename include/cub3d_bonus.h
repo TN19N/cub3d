@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 07:24:31 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/20 16:15:54 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/26 15:24:09 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "../mlx/mlx.h"
 # include <math.h>
 # include <stdlib.h>
+# include <stdio.h>
 
 # define WINDOW_HIEGHT 640
 # define WINDOW_WIDTH 1000
@@ -79,16 +80,10 @@ typedef struct s_axis
 	int	y;
 }	t_axis;
 
-
-
-# include <stdio.h>
-
-
-
 typedef struct s_map
 {
 	char		**map_content;
-	int 		map_width;
+	int			map_width;
 	t_texture	full_map;
 	t_axis		player;
 	void		*icon;
@@ -271,7 +266,7 @@ void	open_door(t_data *data, int y, int x);
 void	close_door(t_data *data, int y, int x);
 int		check_door(t_data *data, int y, int x);
 void	sound(int i);
-void    zombie_manager(t_data *data, int count);
+void	zombie_manager(t_data *data, int count);
 void	init_doors_and_enemys(t_data *data);
 void	save_enemy_info(t_data *data, t_math *m, int y, int x);
 void	init_enemy(t_data *data, t_math *m);

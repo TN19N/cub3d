@@ -23,6 +23,7 @@
 # define WINDOW_WIDTH 1000
 
 # define MOVE_SPEED 0.1
+# define MOVE_ENEMY 0.15
 # define ROT_SPEED 0.05
 
 # define MOVE_FORWARD 13
@@ -57,7 +58,7 @@
 # define OPENED 1
 
 # define PATH_DOOR "textures/door/door.png"
-# define PATH_ENEMY "textures/sprits/barrel.png"
+# define PATH_ENEMY "../untitled.png"
 
 typedef struct s_data	t_data;
 
@@ -89,7 +90,6 @@ typedef struct s_map
 	char		**map_content;
 	int 		map_width;
 	t_texture	full_map;
-	t_texture	part_map;
 	t_axis		player;
 	void		*icon;
 	int			endian;
@@ -180,10 +180,12 @@ typedef struct s_gun
 
 typedef struct s_enemy
 {
-	t_texture	en_t;
 	float		x;
 	float		y;
 	float		dest;
+	int			frame_index;
+	int			zombie_dead;
+	int			attacking;
 }				t_enemy;
 
 typedef struct s_door
@@ -193,6 +195,13 @@ typedef struct s_door
 	int			y;
 	int			stat;
 }		t_door;
+
+typedef struct s_zombie
+{
+	t_texture	*walk_frames;
+	t_texture	*death_frames;
+	t_texture	*attack_frames;
+}				t_zombie;
 
 typedef struct s_data
 {
@@ -208,6 +217,7 @@ typedef struct s_data
 	t_texture	ce_t;
 	t_texture	*tar;
 	t_player	pl;
+	t_zombie	zombie;
 	char		**map;
 	t_map		mini_map;
 	int			*key_bord;
@@ -224,17 +234,21 @@ typedef struct s_data
 }				t_data;
 
 void	init_the_map(char *map_name, t_data *data);
+int		in_range(t_data *data, int i);
+void	my_mlx_pixel_put(t_texture *data, int x, int y, int color);
 void	get_colors(char *color, int **ptr);
+int		pixel_color(t_texture *data, int x, int y);
 void	get_png_files(char *file_path, t_texture *t, void *ml);
 void	add_to_map(t_data *data, char *line);
 void	check_map(t_data *data);
 void	strat_ray(t_data *data, int count);
+int		hit_enemy(t_data *data, float x, float y, int i);
 void	draw_walls(t_data *data, t_math *math);
 void	get_delta_dist(t_math *m);
 int		**init_buffer(void);
 void	move_player(t_player *p, char **map, float x, float y);
 void	rotate_player(t_player *p, float i);
-void	check_col(char **map, float *tmp_y, float *tmp_x);
+void	check_col(char **map, float *tmp_y, float *tmp_x, float collision);
 int		releas_key(int key, t_data *data);
 int		press_key(int key, t_data *data);
 void	put_in_image(t_data *data, int i, int j, int color);
@@ -257,6 +271,7 @@ void	open_door(t_data *data, int y, int x);
 void	close_door(t_data *data, int y, int x);
 int		check_door(t_data *data, int y, int x);
 void	sound(int i);
+void    zombie_manager(t_data *data, int count);
 void	init_doors_and_enemys(t_data *data);
 void	save_enemy_info(t_data *data, t_math *m, int y, int x);
 void	init_enemy(t_data *data, t_math *m);
@@ -267,7 +282,7 @@ void	gun_frames(t_data *data, int count);
 void	load_frames(t_data *data);
 void	more_keys(t_data *data);
 int		ft_clean(t_data	*data);
-void	draw_map(t_map *map);
+void	draw_map(t_map *map, t_data *data);
 void	draw_part_of_map(t_data *data);
 
 #endif

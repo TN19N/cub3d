@@ -28,18 +28,10 @@ int	wich_one(t_data *data, int y, int x)
 
 void	get_enemy_info(t_data *data, int y, int x)
 {
-	t_texture	*t;
-	int			tmp;
 	t_enemy		*e;
 	static int	i;
 
 	e = &data->enemys[i++];
-	t = &e->en_t;
-	t->texture = \
-	mlx_png_file_to_image(data->ml, PATH_ENEMY, &t->width, &t->hight);
-	if (!t->texture)
-		ft_error("can't open enemy png :(");
-	t->info = mlx_get_data_addr(t->texture, &t->bits, &t->line_len, &tmp);
 	e->x = (float)x + 0.5;
 	e->y = (float)y + 0.5;
 }

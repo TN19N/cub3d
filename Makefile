@@ -42,10 +42,12 @@ SRCS_BONUS =  $(SRCS_PATH_BONUS)cub3d_bonus.c \
 		$(SRCS_PATH_BONUS)doors.c \
 		$(SRCS_PATH_BONUS)sounds.c \
 		$(SRCS_PATH_BONUS)doors_2.c \
+		$(SRCS_PATH_BONUS)zombie_manager.c \
 		$(SRCS_PATH_BONUS)load_frames.c \
 		$(SRCS_PATH_BONUS)minimap.c \
 		$(SRCS_PATH_BONUS)init.c \
 		$(SRCS_PATH_BONUS)enemys.c \
+		$(SRCS_PATH_BONUS)map_utils.c \
 		$(SRCS_PATH_BONUS)gun.c \
 		$(SRCS_PATH_BONUS)utils_bonus.c
 

@@ -31,6 +31,7 @@ void	strat_ray(t_data *data, int count)
 	img_t->info = mlx_get_data_addr(img_t->texture, &img_t->bits, \
 	&img_t->line_len, &tmp);
 	draw_walls(data, math);
+	zombie_manager(data, count);
 	draw_enemy(data, -1);
 	gun_frames(data, count);
 	data->change = 1;

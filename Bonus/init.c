@@ -14,6 +14,9 @@
 
 void	init_gun_and_mouse(t_data *data)
 {
+	int	i;
+
+	i = 0;
 	data->mouse_on = 1;
 	data->mouse_1 = 0;
 	data->mouse_2 = 0;
@@ -23,6 +26,13 @@ void	init_gun_and_mouse(t_data *data)
 	data->gun.bullets = 5;
 	data->gun.fired = 0;
 	data->gun.gun_reload = 0;
+	while (i < data->number_e)
+	{
+		data->enemys[i].frame_index = 0;
+		data->enemys[i].zombie_dead = 0;
+		data->enemys[i].attacking = 0;
+		i++;
+	}
 }
 
 void	init_2(t_data *data)
@@ -45,17 +55,10 @@ void	init_2(t_data *data)
 
 void	init_1(t_data *data)
 {
-	int tmp;
-
 	init_gun_and_mouse(data);
 	load_frames(data);
 	data->mini_map.map_content = data->map;
-	printf("%d %d\n", data->mini_map.map_width, data->mini_map.map_height);
-	data->mini_map.full_map.texture = mlx_new_image(data->ml, data->mini_map.map_width, data->mini_map.map_height);
-	data->mini_map.full_map.info = mlx_get_data_addr(data->mini_map.full_map.texture,&data->mini_map.full_map.bits,&data->mini_map.full_map.line_len,&data->mini_map.full_map.endian);
-	data->mini_map.part_map.texture = NULL;
-	data->mini_map.icon = mlx_png_file_to_image(data->ml,"./textures/loading/circle.png",&tmp, &tmp);
-	draw_map(&data->mini_map);
+	draw_map(&data->mini_map, data);
 	if (data->pl.spawning == 'E')
 	{
 		data->pl.plane_x = 0.0;

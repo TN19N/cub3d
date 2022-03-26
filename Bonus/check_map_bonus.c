@@ -31,7 +31,7 @@ int	check_if_valid(t_data *data, char c, int i, int j)
 			data->pl.data = data;
 			data->pl.pos_x = (float)j;
 			data->pl.pos_y = (float)i;
-			check_col(data->map, &data->pl.pos_y, &data->pl.pos_x);
+			check_col(data->map, &data->pl.pos_y, &data->pl.pos_x, COLLISION);
 			data->pl.spawning = data->map[i][j];
 			data->map[i][j] = '0';
 		}
@@ -136,10 +136,10 @@ void	check_map(t_data *data)
 			if (check_if_valid(data, data->map[i][j], i, j))
 				ft_error("invalid element in the map");
 		}
-		if (j > data->mini_map.map_width)
-			data->mini_map.map_width = j * 41;
+		if (j > data->mini_map.map_width / 21)
+			data->mini_map.map_width = j * 21;
 	}
-	data->mini_map.map_height = i * 41;
+	data->mini_map.map_height = i * 21;
 	if (data->pl.spawning == '@')
 		ft_error("you didnt entre a player ???");
 	init_doors_and_enemys(data);

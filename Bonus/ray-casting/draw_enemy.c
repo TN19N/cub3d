@@ -64,7 +64,12 @@ void	s_drawing(t_data *data, t_math_2 *m, t_enemy *e)
 	int			i;
 
 	i = m->draw_start_x - 1;
-	t = &e->en_t;
+	if (e->attacking)
+		t = &data->zombie.attack_frames[e->frame_index];
+	else if (!e->zombie_dead)
+		t = &data->zombie.walk_frames[e->frame_index];
+	else if (e->zombie_dead)
+		t = &data->zombie.death_frames[e->frame_index];
 	while (++i < m->draw_end_x)
 	{
 		m->tex_x = (int)(256 * (i - \

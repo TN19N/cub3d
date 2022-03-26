@@ -12,7 +12,7 @@
 
 #include "../include/cub3d_bonus.h"
 
-void	check_col(char **map, float *tmp_y, float *tmp_x)
+void	check_col(char **map, float *tmp_y, float *tmp_x, float collision)
 {
 	int		len_h;
 	float	col_x;
@@ -21,18 +21,18 @@ void	check_col(char **map, float *tmp_y, float *tmp_x)
 	float	b_col_y;
 
 	len_h = ft_count_2d_array(map);
-	col_x = *tmp_x + COLLISION;
-	col_y = *tmp_y + COLLISION;
-	b_col_x = *tmp_x - COLLISION;
-	b_col_y = *tmp_y - COLLISION;
+	col_x = *tmp_x + collision;
+	col_y = *tmp_y + collision;
+	b_col_x = *tmp_x - collision;
+	b_col_y = *tmp_y - collision;
 	if ((int)col_y < len_h && map[(int)col_y][(int)*tmp_x] == '1')
-		*tmp_y = (int)col_y - COLLISION;
+		*tmp_y = (int)col_y - collision;
 	if (map[(int)*tmp_y][(int)col_x] == '1')
-		*tmp_x = (int)col_x - COLLISION;
+		*tmp_x = (int)col_x - collision;
 	if ((int)b_col_x >= 0 && map[(int)*tmp_y][(int)b_col_x] == '1')
-		*tmp_x = (int)*tmp_x + COLLISION;
+		*tmp_x = (int)*tmp_x + collision;
 	if ((int)b_col_y >= 0 && map[(int)b_col_y][(int)*tmp_x] == '1')
-		*tmp_y = (int)*tmp_y + COLLISION;
+		*tmp_y = (int)*tmp_y + collision;
 }
 
 void	rotate_player(t_player *p, float i)
@@ -72,7 +72,7 @@ void	move_side_way(t_player *p, char **map, float i)
 			open_door(p->data, (int)tmp_y, (int)tmp_x);
 		else if (map[(int)p->pos_y][(int)p->pos_x] == 'D')
 			close_door(p->data, (int)p->pos_y, (int)p->pos_x);
-		check_col(map, &tmp_y, &tmp_x);
+		check_col(map, &tmp_y, &tmp_x, COLLISION);
 		p->pos_x = tmp_x;
 		p->pos_y = tmp_y;
 	}
@@ -92,7 +92,7 @@ void	move_player(t_player *p, char **map, float x, float y)
 			open_door(p->data, (int)tmp_y, (int)tmp_x);
 		else if (map[(int)p->pos_y][(int)p->pos_x] == 'D')
 			close_door(p->data, (int)p->pos_y, (int)p->pos_x);
-		check_col(map, &tmp_y, &tmp_x);
+		check_col(map, &tmp_y, &tmp_x, COLLISION);
 		p->pos_x = tmp_x;
 		p->pos_y = tmp_y;
 	}

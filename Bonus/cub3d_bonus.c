@@ -27,6 +27,7 @@ void	put_evry_thene(t_data *data)
 	l = data->gun.frame;
 	mlx_put_image_to_window(data->ml, data->wi, data->b_img.texture, 0, 0);
 	mlx_put_image_to_window(data->ml, data->wi, data->gun.cursor, 500, 320);
+	draw_part_of_map(data);
 	if (data->gun.gun_reload)
 		mlx_put_image_to_window(data->ml, \
 		data->wi, data->gun.reload_frames[l], 0, 0);
@@ -38,11 +39,11 @@ void	put_evry_thene(t_data *data)
 	if (data->gun.bullets)
 		mlx_put_image_to_window(data->ml, data->wi, \
 		data->gun.bullets_frames[data->gun.bullets - 1], -80, 500);
-	if (data->mini_map.part_map.texture)
-		mlx_destroy_image(data->ml,data->mini_map.part_map.texture);
-	draw_part_of_map(data);
-	mlx_put_image_to_window(data->ml,data->wi, data->mini_map.part_map.texture, 0, 0);
-	mlx_put_image_to_window(data->ml,data->wi, data->mini_map.icon, data->mini_map.player.x, data->mini_map.player.y);
+	my_mlx_pixel_put(&data->b_img, data->mini_map.player.x \
+		+ (data->pl.dir_x * 10), \
+		data->mini_map.player.y + (data->pl.dir_y * 10), 0xFFFFFF);
+	mlx_put_image_to_window(data->ml, data->wi, data->mini_map.icon, \
+		data->mini_map.player.x - 5, data->mini_map.player.y - 5);
 	data->change = 0;
 }
 
@@ -66,7 +67,7 @@ void	keys(t_data *data, int count, int *i)
 		rotate_player(&data->pl, -1.0);
 		data->mouse_2 = 0;
 	}
-	if (*i > 0)
+	if (count % 100 == 0)
 		strat_ray(data, count);
 }
 
@@ -83,11 +84,9 @@ int	animation(t_data *data)
 			reload_gun(&data->gun);
 		keys(data, count, &i);
 		gun_inamation(&data->gun, data, count, i);
-		if (data->change || ((data->gun.gun_reload || data->gun.fired) \
-		&& count % 400 == 0))
+		if (data->change || data->gun.gun_reload || data->gun.fired)
 			put_evry_thene(data);
-		if ((data->gun.fired || data->gun.gun_reload) && \
-		((count % 400 == 0 && !i) || (data->gun.frame == 0 && i)))
+		if (data->gun.frame == 0 && (data->gun.gun_reload || data->gun.fired))
 			data->gun.frame++;
 	}
 	count++;

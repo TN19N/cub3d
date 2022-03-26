@@ -39,16 +39,30 @@ int	mouse(int x, int y, t_data *data)
 
 int	handle_mouse_button(int button, int x, int y, t_data *data)
 {
-	(void)x;
-	(void)y;
+	int	i;
+
+	i = 0;
 	if (!data->mouse_on)
 	{
 		data->mouse_on = 1;
 		mlx_mouse_hide();
-		mlx_mouse_move(data->wi, WINDOW_WIDTH / 2, 0);
+		mlx_mouse_move(data->wi, WINDOW_WIDTH / 2, (x - x) + (y - y));
 	}
 	if (button == 1 && !data->gun.gun_reload)
+	{
+		while (i < data->number_e)
+		{
+			if (!data->enemys[i].zombie_dead && \
+				hit_enemy(data, data->pl.pos_x, data->pl.pos_y, i))
+			{
+				data->enemys[i].zombie_dead = 1;
+				data->enemys[i].frame_index = 0;
+				break ;
+			}
+			i++;
+		}
 		fire_gun(&data->gun);
+	}
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 11:36:38 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/17 12:52:21 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/27 10:17:16 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void	get_colors(char *color, int **ptr)
 		if (color[i] != ',' && (color[i] < '0' || color[i] > '9'))
 			ft_error("envalid color type !!");
 	}
+	if (i != 0 && color[i - 1] == ',')
+		ft_error("envalid color type !!");
 	*ptr = malloc(sizeof(int) * 1);
 	if (!*ptr)
 		ft_error("malloc faild :(");

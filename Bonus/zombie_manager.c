@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 09:46:38 by hait-moh          #+#    #+#             */
-/*   Updated: 2022/03/27 08:28:22 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/27 10:26:03 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	zombie_manager(t_data *data, int count)
 			|| data->enemys[i].frame_index == 32))
 		{
 			printf("you died!\n");
-			exit(0);
+			ft_clean(data);
 		}
 		animation_manager(data, count, i);
 		if (!data->enemys[i].zombie_dead && !data->enemys[i].attacking)

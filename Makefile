@@ -6,13 +6,13 @@
 #    By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/11 07:17:57 by mannouao          #+#    #+#              #
-#    Updated: 2022/03/20 16:06:00 by mannouao         ###   ########.fr        #
+#    Updated: 2022/03/27 10:29:19 by mannouao         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 MLX = libmlx.dylib
-NAME_BONUS = cub3d_bonus
-NAME = cub3d
+NAME_BONUS = cub3D_bonus
+NAME = cub3D
 CC = gcc
 LIBFT = libft/libft.a
 SRCS_PATH = Mandatory/

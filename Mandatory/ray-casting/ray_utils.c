@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 08:20:34 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/15 07:31:46 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/27 14:06:33 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 void	get_right_one(t_data *data, t_math *m)
 {
 	if (m->side == 0 && m->raydir_x > 0)
-		data->tar = &data->no_t;
-	else if (m->side == 0 && m->raydir_x < 0)
 		data->tar = &data->ea_t;
-	else if (m->side == 1 && m->raydir_y > 0)
+	else if (m->side == 0 && m->raydir_x < 0)
 		data->tar = &data->we_t;
-	else
+	else if (m->side == 1 && m->raydir_y > 0)
 		data->tar = &data->so_t;
+	else
+		data->tar = &data->no_t;
 }
 
 void	get_delta_dist(t_math *m)

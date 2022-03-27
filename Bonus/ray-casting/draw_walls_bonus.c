@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 07:18:34 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/27 09:34:13 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/27 13:18:40 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,6 @@ void	get_side_dist(t_data *data, t_math *m)
 		m->step_y = 1;
 		m->side_dist_y = (m->map_y + 1.0 - data->pl.pos_y) * m->delta_dist_y;
 	}
-	m->old_side_x = m->side_dist_x;
-	m->old_side_y = m->side_dist_y;
 }
 
 void	draw_walls(t_data *data, t_math *math)

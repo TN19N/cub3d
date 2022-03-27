@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 10:34:22 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/20 16:38:09 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/27 13:48:58 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ void	init_gun_and_mouse(t_data *data)
 
 void	init_2(t_data *data)
 {
-	if (data->pl.spawning == 'N')
+	if (data->pl.spawning == 'E')
 	{
 		data->pl.plane_x = 0.0;
 		data->pl.plane_y = -0.66;
 		data->pl.dir_x = 1.0;
 		data->pl.dir_y = 0.0;
 	}
-	else if (data->pl.spawning == 'S')
+	else if (data->pl.spawning == 'N')
 	{
 		data->pl.plane_x = -0.66;
 		data->pl.plane_y = 0.0;
@@ -59,14 +59,14 @@ void	init_1(t_data *data)
 	load_frames(data);
 	data->mini_map.map_content = data->map;
 	draw_map(&data->mini_map, data);
-	if (data->pl.spawning == 'E')
+	if (data->pl.spawning == 'W')
 	{
 		data->pl.plane_x = 0.0;
 		data->pl.plane_y = 0.66;
 		data->pl.dir_x = -1.0;
 		data->pl.dir_y = 0.0;
 	}
-	if (data->pl.spawning == 'W')
+	if (data->pl.spawning == 'S')
 	{
 		data->pl.plane_x = 0.66;
 		data->pl.plane_y = 0.0;

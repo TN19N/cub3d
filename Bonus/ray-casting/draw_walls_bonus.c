@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 07:18:34 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/20 07:13:52 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/27 09:34:13 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	start_drawing(t_data *data, t_math *math, int x)
 	{
 		math->tex_y = (int)math->tex_pos & (data->tar->hight - 1);
 		math->tex_pos += math->step;
-		color = (int *)data->tar->info + (data->tar->hight * math->tex_y \
-		+ math->tex_x);
+		color = (int *)(data->tar->info + (data->tar->line_len * math->tex_y \
+		+ math->tex_x * (data->tar->bits / 8)));
 		put_in_image(data, i, x, add_darck(*color, math->perp_wall_dist));
 		i++;
 	}

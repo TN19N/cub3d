@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 09:35:57 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/18 09:17:49 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/27 09:41:18 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@ void	put_cell(t_data *data, t_math *math, int y, int x)
 	int	ty;
 
 	tx = (int)(math->current_floor_x * data->ce_t.width) % \
-	data->ce_t.width * (data->ce_t.bits / 8);
+	data->ce_t.width;
 	ty = (int)(math->current_floor_y * data->ce_t.hight) % \
-	data->ce_t.hight * (data->ce_t.bits / 8);
-	color = (int *)(data->ce_t.info + ((data->ce_t.width * ty) + tx));
+	data->ce_t.hight;
+	color = (int *)(data->ce_t.info + ((data->ce_t.line_len * ty) + \
+	(tx * (data->ce_t.bits / 8))));
 	put_in_image(data, WINDOW_HIEGHT - y, x, \
 	add_darck(*color, math->current_dist));
 }
@@ -34,10 +35,11 @@ void	put_floor(t_data *data, t_math *math, int y, int x)
 	int	ty;
 
 	tx = (int)(math->current_floor_x * data->fl_t.width) % \
-	data->fl_t.width * (data->fl_t.bits / 8);
+	data->fl_t.width;
 	ty = (int)(math->current_floor_y * data->fl_t.hight) % \
-	data->fl_t.hight * (data->fl_t.bits / 8);
-	color = (int *)(data->fl_t.info + ((data->fl_t.width * ty) + tx));
+	data->fl_t.hight;
+	color = (int *)(data->fl_t.info + ((data->fl_t.line_len * ty) + \
+	(tx * (data->fl_t.bits / 8))));
 	put_in_image(data, y, x, \
 	add_darck(*color, math->current_dist));
 }

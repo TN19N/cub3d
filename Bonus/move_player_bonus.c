@@ -6,11 +6,37 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 09:05:45 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/26 16:08:53 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/27 08:33:30 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d_bonus.h"
+
+void	check_if_enemy(t_player *p, float *tmp_y, float *tmp_x, int x)
+{
+	t_enemy	*e;
+	int		i;
+
+	i = -1;
+	while (++i < p->data->number_e)
+	{
+		if (x == i)
+			continue ;
+		e = &p->data->enemys[i];
+		if (fabs(*tmp_x - e->x) < COLLISION && \
+		fabs(*tmp_y - e->y) < COLLISION)
+		{
+			if (*tmp_x > e->x)
+				*tmp_x = e->x + COLLISION;
+			else
+				*tmp_x = e->x - COLLISION;
+			if (*tmp_y > e->y)
+				*tmp_y = e->y + COLLISION;
+			else
+				*tmp_y = e->y - COLLISION;
+		}
+	}
+}
 
 void	check_col(char **map, float *tmp_y, float *tmp_x, float collision)
 {
@@ -73,6 +99,7 @@ void	move_side_way(t_player *p, char **map, float i)
 		else if (map[(int)p->pos_y][(int)p->pos_x] == 'D')
 			close_door(p->data, (int)p->pos_y, (int)p->pos_x);
 		check_col(map, &tmp_y, &tmp_x, COLLISION);
+		check_if_enemy(p, &tmp_y, &tmp_x, -1);
 		p->pos_x = tmp_x;
 		p->pos_y = tmp_y;
 	}
@@ -93,6 +120,7 @@ void	move_player(t_player *p, char **map, float x, float y)
 		else if (map[(int)p->pos_y][(int)p->pos_x] == 'D')
 			close_door(p->data, (int)p->pos_y, (int)p->pos_x);
 		check_col(map, &tmp_y, &tmp_x, COLLISION);
+		check_if_enemy(p, &tmp_y, &tmp_x, -1);
 		p->pos_x = tmp_x;
 		p->pos_y = tmp_y;
 	}

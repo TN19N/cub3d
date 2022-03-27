@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:42:48 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/26 15:31:58 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/26 20:20:11 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	wich_one(t_data *data, int y, int x)
 			return (i);
 		i++;
 	}
-	return (0);
+	return (-1);
 }
 
 void	get_enemy_info(t_data *data, int y, int x)

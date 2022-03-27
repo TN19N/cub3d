@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 09:46:38 by hait-moh          #+#    #+#             */
-/*   Updated: 2022/03/26 16:47:12 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/27 08:28:22 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	check_for_path(t_data *data, int i)
 	data->enemys[i].x += deltax / 6;
 	data->enemys[i].y += deltay / 6;
 	check_col(data->map, &data->enemys[i].y, &data->enemys[i].x, 0.28);
+	check_if_enemy(&data->pl, &data->enemys[i].y, &data->enemys[i].x, i);
 }
 
 void	movement_manager(t_data *data, int i)

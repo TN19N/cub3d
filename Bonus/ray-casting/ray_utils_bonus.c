@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 08:20:34 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/27 14:06:01 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/28 07:32:26 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,12 @@ void	con_draw(t_data *data, t_math_2 *m, int i, t_enemy *e)
 	unsigned int	*color;
 
 	j = m->draw_start_y - 1;
-	if (e->attacking)
+	if (e->zombie_dead)
+		t = &data->zombie.death_frames[e->frame_index];
+	else if (e->attacking)
 		t = &data->zombie.attack_frames[e->frame_index];
 	else if (!e->zombie_dead)
 		t = &data->zombie.walk_frames[e->frame_index];
-	else if (e->zombie_dead)
-		t = &data->zombie.death_frames[e->frame_index];
 	while (++j < m->draw_end_y)
 	{
 		d = (j * 256) - (WINDOW_HIEGHT * 128) + (m->sprite_height * 128);

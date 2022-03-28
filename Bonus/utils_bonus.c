@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 21:03:57 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/20 08:33:42 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/28 07:34:09 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	handle_mouse_button(int button, int x, int y, t_data *data)
 {
 	int	i;
 
-	i = 0;
+	i = -1;
 	if (!data->mouse_on)
 	{
 		data->mouse_on = 1;
@@ -50,16 +50,16 @@ int	handle_mouse_button(int button, int x, int y, t_data *data)
 	}
 	if (button == 1 && !data->gun.gun_reload)
 	{
-		while (i < data->number_e)
+		while (++i < data->number_e)
 		{
 			if (!data->enemys[i].zombie_dead && \
 				hit_enemy(data, data->pl.pos_x, data->pl.pos_y, i))
 			{
 				data->enemys[i].zombie_dead = 1;
 				data->enemys[i].frame_index = 0;
+				data->enemys[i].attacking = 0;
 				break ;
 			}
-			i++;
 		}
 		fire_gun(&data->gun);
 	}

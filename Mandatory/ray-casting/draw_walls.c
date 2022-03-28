@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 07:18:34 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/27 13:21:02 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/27 14:34:01 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	start_drawing(t_data *data, t_math *math, int x)
 	i = math->draw_start;
 	while (i < math->draw_end)
 	{
-		math->tex_y = (int)math->tex_pos & (data->tar->hight - 1);
+		math->tex_y = (int)math->tex_pos;
 		math->tex_pos += math->step;
 		color = (int *)(data->tar->info + (data->tar->line_len * math->tex_y \
 		+ math->tex_x * (data->tar->bits / 8)));
@@ -53,10 +53,6 @@ void	get_line_to_draw(t_data *data, t_math *m)
 	m->wall_x -= floor((m->wall_x));
 	get_right_one(data, m);
 	m->tex_x = (int)(m->wall_x * (float)data->tar->width);
-	if (m->side == 0 && m->raydir_x > 0)
-		m->tex_x = data->tar->width - m->tex_x - 1;
-	if (m->side == 1 && m->raydir_y < 0)
-		m->tex_x = data->tar->width - m->tex_x - 1;
 	m->step = 1.0 * data->tar->hight / m->line_height;
 	m->tex_pos = ((m->draw_start - (WINDOW_HIEGHT / \
 	2)) + (m->line_height / 2)) * m->step;

@@ -6,7 +6,7 @@
 #    By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/11 07:17:57 by mannouao          #+#    #+#              #
-#    Updated: 2022/03/27 10:29:19 by mannouao         ###   ########.fr        #
+#    Updated: 2022/03/28 07:50:38 by mannouao         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,19 +36,19 @@ SRCS_BONUS =  $(SRCS_PATH_BONUS)cub3d_bonus.c \
 		$(SRCS_PATH_BONUS)ray-casting/draw_walls_bonus.c \
 		$(SRCS_PATH_BONUS)ray-casting/ray_utils_bonus.c \
 		$(SRCS_PATH_BONUS)ray-casting/draw_up_down_bonus.c \
-		$(SRCS_PATH_BONUS)ray-casting/colors.c \
-		$(SRCS_PATH_BONUS)ray-casting/draw_enemy.c \
+		$(SRCS_PATH_BONUS)ray-casting/colors_bonus.c \
+		$(SRCS_PATH_BONUS)ray-casting/draw_enemy_bonus.c \
 		$(SRCS_PATH_BONUS)move_player_bonus.c \
-		$(SRCS_PATH_BONUS)doors.c \
-		$(SRCS_PATH_BONUS)sounds.c \
-		$(SRCS_PATH_BONUS)doors_2.c \
-		$(SRCS_PATH_BONUS)zombie_manager.c \
-		$(SRCS_PATH_BONUS)load_frames.c \
-		$(SRCS_PATH_BONUS)minimap.c \
-		$(SRCS_PATH_BONUS)init.c \
-		$(SRCS_PATH_BONUS)enemys.c \
-		$(SRCS_PATH_BONUS)map_utils.c \
-		$(SRCS_PATH_BONUS)gun.c \
+		$(SRCS_PATH_BONUS)doors_bonus.c \
+		$(SRCS_PATH_BONUS)sounds_bonus.c \
+		$(SRCS_PATH_BONUS)doors_2_bonus.c \
+		$(SRCS_PATH_BONUS)zombie_manager_bonus.c \
+		$(SRCS_PATH_BONUS)load_frames_bonus.c \
+		$(SRCS_PATH_BONUS)minimap_bonus.c \
+		$(SRCS_PATH_BONUS)init_bonus.c \
+		$(SRCS_PATH_BONUS)enemys_bonus.c \
+		$(SRCS_PATH_BONUS)map_utils_bonus.c \
+		$(SRCS_PATH_BONUS)gun_bonus.c \
 		$(SRCS_PATH_BONUS)utils_bonus.c
 
 OBJS = $(SRCS:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 09:35:57 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/27 09:41:18 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/27 17:10:28 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,5 @@ void	draw_up_down(t_data *data, t_math *math, int x)
 	}
 	math->dist_wall = math->perp_wall_dist;
 	math->dist_player = 0.0;
-	if (math->draw_end < 0)
-		math->draw_end = WINDOW_HIEGHT;
 	start_drawing_up_down(data, math, x);
 }

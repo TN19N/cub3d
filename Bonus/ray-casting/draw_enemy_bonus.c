@@ -6,7 +6,7 @@
 /*   By: mannouao <mannouao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 19:54:56 by mannouao          #+#    #+#             */
-/*   Updated: 2022/03/19 13:31:40 by mannouao         ###   ########.fr       */
+/*   Updated: 2022/03/28 07:32:58 by mannouao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,12 @@ void	s_drawing(t_data *data, t_math_2 *m, t_enemy *e)
 	int			i;
 
 	i = m->draw_start_x - 1;
-	if (e->attacking)
+	if (e->zombie_dead)
+		t = &data->zombie.death_frames[e->frame_index];
+	else if (e->attacking)
 		t = &data->zombie.attack_frames[e->frame_index];
 	else if (!e->zombie_dead)
 		t = &data->zombie.walk_frames[e->frame_index];
-	else if (e->zombie_dead)
-		t = &data->zombie.death_frames[e->frame_index];
 	while (++i < m->draw_end_x)
 	{
 		m->tex_x = (int)(256 * (i - \

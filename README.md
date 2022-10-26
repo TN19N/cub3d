@@ -4,3 +4,6 @@ Summary: This project is inspired by the world-famous Wolfenstein 3D game, which
 
 # To run the game :
 ``` make bonus && ./cub3D_bonus maps/map_b.cub ```
+
+# screenshot
+<img src="https://github.com/Mustapha-Nawawi-T/cub3d/blob/main/www.png?raw=true" />

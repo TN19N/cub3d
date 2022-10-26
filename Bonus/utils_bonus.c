@@ -20,6 +20,7 @@ int	releas_key(int key, t_data *data)
 
 int	press_key(int key, t_data *data)
 {
+	printf("--> %d\n", key);
 	data->key_bord[key] = 1;
 	return (0);
 }

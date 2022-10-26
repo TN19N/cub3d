@@ -37,7 +37,7 @@
 
 # define RELOAD_GUN 15
 
-# define MOUSE_ON_OFF 50
+# define MOUSE_ON_OFF 12
 # define ESC 53
 
 # define COLLISION 0.2

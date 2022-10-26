@@ -7,3 +7,15 @@ Summary: This project is inspired by the world-famous Wolfenstein 3D game, which
 
 # screenshot
 <img src="https://github.com/Mustapha-Nawawi-T/cub3d/blob/main/www.png?raw=true" />
+
+# Keys
+| Key |    action     |
+| --- | ------------- |
+|  Q  | release mouse |
+|  W  | move forward  |
+|  S  | move downward |
+|  D  | move right    |
+|  A  | move left     |
+|  R  | reload gun    |
+
+the rest with the mouse :)

@@ -13,7 +13,7 @@ Summary: This project is inspired by the world-famous Wolfenstein 3D game, which
 | --- | ------------- |
 |  Q  | release mouse |
 |  W  | move forward  |
-|  S  | move downward |
+|  S  | move backward |
 |  D  | move right    |
 |  A  | move left     |
 |  R  | reload gun    |
